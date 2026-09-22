@@ -1,0 +1,179 @@
+@import "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Dancing+Script:wght@400;600&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap";
+@import "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #1b1c1c;
+    font-family: 'Inter', sans-serif;
+  }
+  body {
+    overscroll-behavior: none;
+  }
+}
+
+/* Custom Hide Scrollbar Utility */
+::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 3D Stage and Perspective Settings */
+.perspective-stage {
+  perspective: 1300px;
+  perspective-origin: 50% 50%;
+}
+
+.carousel-track-container {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-track {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 270px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 480px) {
+  .carousel-track-container {
+    height: 470px;
+  }
+  .carousel-track {
+    width: 285px;
+    height: 420px;
+  }
+}
+
+@media (min-width: 640px) {
+  .perspective-stage {
+    perspective: 1600px;
+  }
+  .carousel-track-container {
+    height: 520px;
+  }
+  .carousel-track {
+    width: 320px;
+    height: 470px;
+  }
+}
+
+/* Common Carousel Card Properties */
+.carousel-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity, filter, box-shadow;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              filter 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform-origin: center center;
+}
+
+/* Keyframe Animations for Infinite Marquee Strips */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 48s linear infinite;
+}
+
+/* Scroll Reveal Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 36px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.85s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.service-card-hover {
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.45s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease;
+}
+
+.service-card-hover:hover {
+  transform: translateY(-8px) scale(1.015);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.12), 0 10px 20px -5px rgba(90, 94, 78, 0.12);
+}
+
+/* Continuous Gentle Floating Animation */
+@keyframes floatingBob {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatingBob 5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatingBob 6.5s ease-in-out 1.8s infinite;
+}
+
+/* 12-Dot Rotating Pulse Loader Animation */
+@keyframes dotPulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% { 
+    opacity: 0.15;
+    transform: scale(0.65);
+  }
+}
+

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Admin routes disallowed for crawler indexing
+Disallow: /admin/
+Disallow: /seo-admin/
+
+Sitemap: https://dhilipstudio.com/sitemap.xml

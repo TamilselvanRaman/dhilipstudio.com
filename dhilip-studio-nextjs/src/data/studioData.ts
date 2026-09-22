@@ -1,0 +1,280 @@
+import { CarouselCard, Review, ServiceItem, StepItem, MarqueeItemRow1, MarqueeItemRow2 } from "../types";
+
+export const heroCards: CarouselCard[] = [
+  {
+    id: 0,
+    category: "Temple Vows",
+    title: "Traditional Temple Solitude",
+    src: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
+    alt: "South Indian bride in silk saree and gold temple jewelry",
+  },
+  {
+    id: 1,
+    category: "Brahmin Rituals",
+    title: "Candid Heritage Vows",
+    src: "/home_Page_images/brahmin-wedding-photography.jpg",
+    alt: "Brahmin wedding ceremony flower shower ritual",
+  },
+  {
+    id: 2,
+    category: "Cinematic Monograph",
+    title: "Post-Wedding Solitude",
+    src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+    alt: "Cinematic post wedding couple shoot",
+  },
+  {
+    id: 3,
+    category: "Sacred Muhurtham",
+    title: "Chennai Wedding Story",
+    src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
+    alt: "South Indian wedding couple under decorated mandap",
+  },
+  {
+    id: 4,
+    category: "Engagement Monograph",
+    title: "Chennai Pre-Wedding Vows",
+    src: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+    alt: "Engagement couple portrait in Chennai studio",
+  },
+  {
+    id: 5,
+    category: "Maternity & Portrait",
+    title: "Baby Shower Monograph",
+    src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+    alt: "Baby shower maternity photoshoot in Chennai",
+  },
+  {
+    id: 6,
+    category: "Kids Birthday",
+    title: "Amrutha Milestone Celebration",
+    src: "/home_Page_images/kids-birthday-photographer-chennai.webp",
+    alt: "Kids birthday celebration setup in Chennai",
+  },
+];
+
+export const marqueeRow1: MarqueeItemRow1[] = [
+  {
+    tag: "Sacred Muhurtham",
+    title: "Chennai Wedding Story",
+    src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
+    alt: "High-fashion bridal editorial portrait in Chennai palace",
+  },
+  {
+    tag: "Candid Moments",
+    title: "Jane & Vishal · Beach Vows",
+    src: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
+    alt: "Mahabalipuram beach pre-wedding shoot",
+  },
+  {
+    tag: "Brahmin Rituals",
+    title: "Kasi Yatra & Mangalyadharanam",
+    src: "/home_Page_images/brahmin-wedding-photography.jpg",
+    alt: "Traditional Tamil Brahmin wedding ceremony",
+  },
+  {
+    tag: "Cinematic Films",
+    title: "Post Wedding Monograph",
+    src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+    alt: "Cinematic post-wedding photoshoot",
+  },
+];
+
+export const marqueeRow2: MarqueeItemRow2[] = [
+  {
+    quote: "Taking pictures is savoring life intensely.",
+    src: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+    alt: "Quiet romantic couple portrait",
+    isOverlay: true,
+  },
+  {
+    tag: "Engagement Vows",
+    title: "Chennai Studio Engagement",
+    src: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+    alt: "Bride and groom engagement portrait",
+  },
+  {
+    quote: "Milestone Celebrations",
+    src: "/home_Page_images/kids-birthday-photographer-chennai.webp",
+    alt: "Kids birthday event photography",
+    isOverlay: true,
+  },
+  {
+    tag: "Maternity Solitude",
+    title: "Baby Shower Monograph",
+    src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+    alt: "Maternity baby shower photoshoot",
+  },
+];
+
+export const servicesList: ServiceItem[] = [
+  {
+    id: 1,
+    title: "Wedding Photography",
+    description: "Timeless sacred rituals, mandap moments & grand wedding celebrations.",
+    img1: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
+    img1Alt: "Wedding photography in Chennai",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+  {
+    id: 2,
+    title: "Candid Photography",
+    description: "Pure unscripted emotions, candid laughs & genuine wedding stories.",
+    img1: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
+    img1Alt: "Candid wedding ceremony photography",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+  {
+    id: 3,
+    title: "Brahmin Wedding Photography",
+    description: "Authentic Iyer & Iyengar rituals, Kasi Yatra & Oonjal coverage.",
+    img1: "/home_Page_images/brahmin-wedding-photography.jpg",
+    img1Alt: "Brahmin wedding photography ritual",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+  {
+    id: 4,
+    title: "Pre & Post-Wedding Shoot",
+    description: "Cinematic romantic couple monographs in scenic outdoor locations.",
+    img1: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+    img1Alt: "Cinematic pre-wedding post-wedding photoshoot",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+  {
+    id: 5,
+    title: "Engagement Photography",
+    description: "Ring exchange celebrations, vibrant couple & family portraits.",
+    img1: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+    img1Alt: "Engagement photography in Chennai",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+  {
+    id: 6,
+    title: "Maternity Photoshoot",
+    description: "Gentle baby-bump portraits journaling your path to parenthood.",
+    img1: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+    img1Alt: "Maternity baby shower photoshoot",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+  {
+    id: 7,
+    title: "Newborn Baby Photoshoot",
+    description: "Safe studio sessions preserving the pure innocence of first days.",
+    img1: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.jpg",
+    img1Alt: "Best newborn baby photographer Chennai",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+  {
+    id: 8,
+    title: "Birthday & Event Photography",
+    description: "Milestone 1st birthdays, cake smashes & festive family joy.",
+    img1: "/home_Page_images/kids-birthday-photographer-chennai.webp",
+    img1Alt: "Kids birthday photographer Chennai",
+    img1Rotate: "",
+    img2: "",
+    img2Alt: "",
+    img2Rotate: "",
+  },
+];
+
+export const reviewsList: Review[] = [
+  {
+    id: 1,
+    quote: "“Mr. Dhilip is an excellent and professional photographer. Very affordable and friendly. He keeps working until you are satisfied. Highly recommended!”",
+    author: "SUGARMAR NATARAJAN",
+    location: "Porur, Chennai · Muhurtham & Reception",
+    avatar: "https://lh3.googleusercontent.com/aida-public/AB6AXuB6tvrge6VDnopJLssAKf9UFDBn2uDvXPdhLQni0oayU7s5pdpU65ux6MB-805bC3UpSLsDfawQ_BRQ9CyeXDLG7pBb-qcwqcQchBuzZ2EvMK3Wna6eXdSdfkKW9zzdFxTsAAlB7Dcu6hbpIH4QxM2cUMuD2ETJi50hnPdS8YzaOv-dEDq0AUPF39zQM68SoLdLVGdtrSJlFAI-cquM8ZvTrS9ORSNwsP9RB2tRvKr0nIAfR25wVRo",
+  },
+  {
+    id: 2,
+    quote: "“The team was exceptionally patient during our 3-day wedding festivities. The candid shots captured our family's genuine laughter and emotional moments perfectly.”",
+    author: "BHARATHI RAJA",
+    location: "Mylapore, Chennai · Traditional Brahmin Wedding",
+    avatar: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 3,
+    quote: "“Dhilip Studio created our dream wedding monograph album. The print quality and color tones on raw silk are of museum calibre. Everyone loved the drone shots!”",
+    author: "KALAI SELVI",
+    location: "Tambaram, Chennai · Destination Beach Wedding",
+    avatar: "https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 4,
+    quote: "“Very punctual and unobtrusive. While rituals were being performed, Dhilip never disturbed the priests yet framed every sacred detail with pure artistry.”",
+    author: "RADHAN R.",
+    location: "Anna Nagar, Chennai · Temple Vows & Reception",
+    avatar: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=400&q=80",
+  },
+  {
+    id: 5,
+    quote: "“Best pre-wedding shoot experience in Mahabalipuram! Dhilip made us feel relaxed from minute one. The resulting cinematic reels went viral among our friends!”",
+    author: "RAMKUMAR ANANDAN",
+    location: "Porur, Chennai · Pre-Wedding & Wedding Story",
+    avatar: "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=400&q=80",
+  },
+];
+
+export const stepsList: StepItem[] = [
+  {
+    number: "01",
+    title: "Story Alignment & Consultation",
+    description: "We sit down over coffee or video call to map out your sacred ritual timeline, family dynamics, and custom aesthetic preferences so no moment is left to chance.",
+    tag: "Step 01 · Planning & Vision",
+    icon: "forum",
+  },
+  {
+    number: "02",
+    title: "Unobtrusive Master Coverage",
+    description: "Over 12+ years documenting South Indian weddings means we anticipate every sacred ritual—from Kasi Yatra to Mangalyadharanam—capturing tears and laughter without interrupting sacred moments.",
+    tag: "Step 02 · Wedding Day Documentation",
+    icon: "photo_camera",
+  },
+  {
+    number: "03",
+    title: "4K Cinema & Aerial Artistry",
+    description: "Dual lead photographers paired with 4K cinema cameras and certified drone operators capture sweeping hall perspectives, intimate vows, and ambient audio with filmic fidelity.",
+    tag: "Step 03 · Multicam & Drone",
+    icon: "videocam",
+  },
+  {
+    number: "04",
+    title: "Signature Color Grading",
+    description: "Every single photograph is individually hand-retouched and color-graded. We preserve authentic skin tones, rich temple gold hues, and vibrant South Asian silk colors without artificial filters.",
+    tag: "Step 04 · Post-Production Art",
+    icon: "auto_fix_high",
+  },
+  {
+    number: "05",
+    title: "Raw Silk Heirloom Album & Digital SSD",
+    description: "You choose your favorite photographs via a private cloud gallery. We print your bespoke wedding monograph on museum-grade raw silk paper, delivered alongside high-speed 4K digital video drives designed to last for generations.",
+    tag: "Step 05 · Final Delivery & Heirloom Sign-Off",
+    icon: "auto_stories",
+    isHighlighted: true,
+  },
+];
+
+export const aboutSectionContent = {
+  title: "BEST WEDDING PHOTOGRAPHERS IN CHENNAI",
+  description: "There is no doubt that the wedding day is the most memorable and important event in our entire life. One of the most essential parts of the perfect and the best wedding planning is that people often forget the marriage photographers.",
+};

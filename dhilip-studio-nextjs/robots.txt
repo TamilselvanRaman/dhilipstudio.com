@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# WordPress
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+
+# Internal Search
+Disallow: /?s=
+Disallow: /search/
+
+# Optional
+Disallow: /cgi-bin/
+
+Sitemap: https://dhilipstudio.com/sitemap.xml
