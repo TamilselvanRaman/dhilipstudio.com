@@ -1,100 +1,138 @@
 "use client";
 
 import React, { useState } from "react";
+import { initialSettings, StudioSettingsData } from "@/lib/adminData";
 
 export default function GeneralStudioSettings() {
-  const [phone, setPhone] = useState("+91 91762 31420");
-  const [email, setEmail] = useState("dhilipstudio@gmail.com");
-  const [address, setAddress] = useState("No. 4/1, Mandaveli Street, Karambakkam, Porur, Chennai-600116");
-  const [mapsQuery, setMapsQuery] = useState("13.0377,80.1514");
+  const [settings, setSettings] = useState<StudioSettingsData>(initialSettings);
   const [saved, setSaved] = useState(false);
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     setSaved(true);
-    setTimeout(() => setSaved(false), 2500);
+    setTimeout(() => setSaved(false), 3000);
   };
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#1b1c1c] border border-stone-800 p-6 rounded-2xl shadow-xl">
+    <div className="space-y-6 font-sans text-slate-900">
+      <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#f3e3a1]">
-            STUDIO CONFIGURATION
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-600 font-bold">
+            BUSINESS PROFILE &amp; INTEGRATIONS
           </span>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide mt-1">
-            General Studio Settings
-          </h1>
-          <p className="text-xs text-stone-400 mt-1">
-            Update studio contact details, WhatsApp integration number, and Google Maps location.
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-wide mt-1">
+            Studio Business Settings
+          </h2>
+          <p className="text-xs text-slate-500 mt-1 font-sans">
+            GST/tax billing details, WhatsApp Business API keys, Razorpay gateway credentials, and data backup/export.
           </p>
         </div>
 
         {saved && (
-          <span className="px-4 py-2 bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 rounded-xl text-xs font-bold animate-pulse">
-            ✓ Settings Updated!
+          <span className="px-4 py-2 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-xl text-xs font-bold animate-pulse">
+            ✓ Settings Saved!
           </span>
         )}
       </div>
 
-      <form onSubmit={handleSave} className="bg-[#1b1c1c] border border-stone-800 rounded-2xl p-6 sm:p-8 space-y-6 shadow-xl max-w-3xl">
+      <form onSubmit={handleSave} className="bg-white border border-slate-200 rounded-2xl p-6 space-y-6 shadow-xs max-w-4xl">
         <div className="space-y-4">
-          <div>
-            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1.5">
-              WhatsApp &amp; Direct Phone Number
-            </label>
-            <input
-              type="text"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#b88c42]"
-            />
+          <h3 className="font-serif font-bold text-base text-slate-900 border-b border-slate-200 pb-2">
+            1. Business &amp; Tax Information
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label className="block text-slate-600 font-mono uppercase font-bold mb-1">Studio Brand Name</label>
+              <input
+                type="text"
+                value={settings.studioName}
+                onChange={(e) => setSettings({ ...settings, studioName: e.target.value })}
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              />
+            </div>
+            <div>
+              <label className="block text-slate-600 font-mono uppercase font-bold mb-1">GSTIN / Tax Registration</label>
+              <input
+                type="text"
+                value={settings.gstNumber}
+                onChange={(e) => setSettings({ ...settings, gstNumber: e.target.value })}
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-mono focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label className="block text-slate-600 font-mono uppercase font-bold mb-1">Official WhatsApp Phone</label>
+              <input
+                type="text"
+                value={settings.phone}
+                onChange={(e) => setSettings({ ...settings, phone: e.target.value })}
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-mono focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              />
+            </div>
+            <div>
+              <label className="block text-slate-600 font-mono uppercase font-bold mb-1">Official Studio Email</label>
+              <input
+                type="email"
+                value={settings.email}
+                onChange={(e) => setSettings({ ...settings, email: e.target.value })}
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-mono focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              />
+            </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1.5">
-              Studio Official Email
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#b88c42]"
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1.5">
-              Studio Address
-            </label>
+            <label className="block text-slate-600 text-xs font-mono uppercase font-bold mb-1">Physical Address</label>
             <textarea
-              rows={3}
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#b88c42]"
+              rows={2}
+              value={settings.address}
+              onChange={(e) => setSettings({ ...settings, address: e.target.value })}
+              className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-900 focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
             />
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1.5">
-              Google Maps Coordinates / Query
-            </label>
-            <input
-              type="text"
-              value={mapsQuery}
-              onChange={(e) => setMapsQuery(e.target.value)}
-              className="w-full bg-stone-900 border border-stone-700 rounded-xl px-4 py-2.5 text-sm text-white focus:outline-none focus:border-[#b88c42]"
-            />
+          <h3 className="font-serif font-bold text-base text-slate-900 border-b border-slate-200 pb-2 pt-4">
+            2. API &amp; Payment Gateway Keys
+          </h3>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label className="block text-slate-600 font-mono uppercase font-bold mb-1">WhatsApp Cloud API Key</label>
+              <input
+                type="password"
+                value={settings.whatsappApiKey}
+                onChange={(e) => setSettings({ ...settings, whatsappApiKey: e.target.value })}
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-mono focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              />
+            </div>
+            <div>
+              <label className="block text-slate-600 font-mono uppercase font-bold mb-1">Razorpay Live Key ID</label>
+              <input
+                type="password"
+                value={settings.razorpayKeyId}
+                onChange={(e) => setSettings({ ...settings, razorpayKeyId: e.target.value })}
+                className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-slate-900 font-mono focus:border-blue-600 focus:outline-none focus:ring-1 focus:ring-blue-600"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="pt-4 border-t border-stone-800 flex justify-end">
+        <div className="pt-4 border-t border-slate-200 flex justify-between items-center">
+          <button
+            type="button"
+            onClick={() => alert("Backup CSV generated!")}
+            className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs border border-slate-200 font-semibold cursor-pointer"
+          >
+            Export Backup (CSV)
+          </button>
+
           <button
             type="submit"
-            className="bg-[#b88c42] hover:bg-[#cca254] text-stone-950 font-bold text-xs uppercase tracking-widest px-8 py-3 rounded-xl transition-all shadow-lg cursor-pointer"
+            className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider shadow-md cursor-pointer"
           >
-            Save Studio Settings
+            Save Settings
           </button>
         </div>
       </form>

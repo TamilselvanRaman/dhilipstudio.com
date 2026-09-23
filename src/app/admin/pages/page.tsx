@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
+import { ImageUploadPicker } from "@/components/admin/ui/ImageUploadPicker";
 
 export interface ListItemData {
   id: string;
@@ -304,13 +305,51 @@ function PageEditorInner() {
         {
           id: "cta",
           name: "Call-To-Action Booking Band",
-          badge: "NOW BOOKING 2026 DATES",
-          title: "Ready To Preserve Your Big Day Forever?",
-          subtitle: "Get instant package quotes and custom photography consultations with lead photographer Mr. Dhilip Kumar.",
+          badge: "NOW BOOKING 2026 WEDDING DATES",
+          title: "See your love story through a different lens.",
+          subtitle: "Candid, traditional and cinematic wedding photography in Chennai — packages engineered for visual storytellers and timeless remembrance.",
           content: "Contact our Chennai studio today to check date availability.",
           imageUrl: "/banners/cta_band_bg.jpg",
-          buttonLabel: "BOOK YOUR DATE NOW →",
+          buttonLabel: "Book a Session ↓",
           buttonLink: "/contact",
+          items: [
+            {
+              id: "cta_card_1",
+              title: "Candid Couple (Top Left)",
+              category: "GREEN DRESS",
+              imageUrl: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
+            },
+            {
+              id: "cta_card_2",
+              title: "Brahmin Ritual (Mid Left)",
+              category: "HOMAM RITUAL",
+              imageUrl: "/home_Page_images/brahmin-wedding-photography.jpg",
+            },
+            {
+              id: "cta_card_3",
+              title: "Engagement Couple (Bottom Left)",
+              category: "GOLD COUTURES",
+              imageUrl: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+            },
+            {
+              id: "cta_card_4",
+              title: "Mandap Couple (Top Right)",
+              category: "YELLOW SILK",
+              imageUrl: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
+            },
+            {
+              id: "cta_card_5",
+              title: "Cinematic Lawn (Mid Right)",
+              category: "RED BLACK",
+              imageUrl: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+            },
+            {
+              id: "cta_card_6",
+              title: "Maternity Blue (Bottom Right)",
+              category: "MATERNITY",
+              imageUrl: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+            },
+          ],
         },
       ],
     },
@@ -816,6 +855,82 @@ function PageEditorInner() {
       );
     }
 
+    // 7. CTA Band Section (Scattered Floating Cards + Title + Subtitle + Badge + Buttons)
+    if (currentSection.id === "cta") {
+      const ctaCards = currentSection.items || [
+        { id: "1", title: "Candid", imageUrl: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp" },
+        { id: "2", title: "Brahmin", imageUrl: "/home_Page_images/brahmin-wedding-photography.jpg" },
+        { id: "3", title: "Engagement", imageUrl: "/home_Page_images/engagement-photo-studio-chennai.jpg" },
+        { id: "4", title: "Mandap", imageUrl: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp" },
+        { id: "5", title: "Cinematic", imageUrl: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg" },
+        { id: "6", title: "Maternity", imageUrl: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg" },
+      ];
+
+      return (
+        <div className="relative w-full bg-[#f6f3ed] p-6 sm:p-8 rounded-2xl border border-stone-300 text-stone-900 shadow-2xl overflow-hidden min-h-[440px] flex items-center justify-center">
+          {/* Ambient Spotlight */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.7)_0%,transparent_70%)] pointer-events-none" />
+
+          {/* Floating Scattered Image Cards */}
+          {ctaCards[0] && (
+            <div className="absolute top-4 left-4 w-20 h-28 sm:w-24 sm:h-32 rounded-xl overflow-hidden shadow-lg border-2 border-white bg-white transform -rotate-12 hover:rotate-0 transition-transform z-10">
+              <img src={ctaCards[0].imageUrl} alt="Card 1" className="w-full h-full object-cover" />
+            </div>
+          )}
+          {ctaCards[1] && (
+            <div className="absolute top-1/3 left-2 w-16 h-22 sm:w-20 sm:h-28 rounded-xl overflow-hidden shadow-lg border-2 border-white bg-white transform rotate-6 hover:rotate-0 transition-transform z-10">
+              <img src={ctaCards[1].imageUrl} alt="Card 2" className="w-full h-full object-cover" />
+            </div>
+          )}
+          {ctaCards[2] && (
+            <div className="absolute bottom-4 left-6 w-18 h-24 sm:w-22 sm:h-28 rounded-xl overflow-hidden shadow-lg border-2 border-white bg-white transform -rotate-6 hover:rotate-0 transition-transform z-10">
+              <img src={ctaCards[2].imageUrl} alt="Card 3" className="w-full h-full object-cover" />
+            </div>
+          )}
+          {ctaCards[3] && (
+            <div className="absolute top-4 right-4 w-20 h-28 sm:w-24 sm:h-32 rounded-xl overflow-hidden shadow-lg border-2 border-white bg-white transform rotate-12 hover:rotate-0 transition-transform z-10">
+              <img src={ctaCards[3].imageUrl} alt="Card 4" className="w-full h-full object-cover" />
+            </div>
+          )}
+          {ctaCards[4] && (
+            <div className="absolute top-1/3 right-2 w-16 h-22 sm:w-20 sm:h-28 rounded-xl overflow-hidden shadow-lg border-2 border-white bg-white transform -rotate-8 hover:rotate-0 transition-transform z-10">
+              <img src={ctaCards[4].imageUrl} alt="Card 5" className="w-full h-full object-cover" />
+            </div>
+          )}
+          {ctaCards[5] && (
+            <div className="absolute bottom-4 right-6 w-18 h-24 sm:w-22 sm:h-28 rounded-xl overflow-hidden shadow-lg border-2 border-white bg-white transform rotate-8 hover:rotate-0 transition-transform z-10">
+              <img src={ctaCards[5].imageUrl} alt="Card 6" className="w-full h-full object-cover" />
+            </div>
+          )}
+
+          {/* Center Main Content Box */}
+          <div className="relative z-20 max-w-md mx-auto text-center space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-[#b88c42]/30 shadow-sm text-[10px] font-bold tracking-wider uppercase text-stone-800">
+              <span className="w-2 h-2 rounded-full bg-[#b88c42] animate-pulse" />
+              <span>{currentSection.badge || "NOW BOOKING 2026 WEDDING DATES"}</span>
+            </div>
+
+            <h3 className="text-xl sm:text-2xl lg:text-3xl text-stone-900 font-serif font-bold leading-tight tracking-tight">
+              {currentSection.title || "See your love story through a different lens."}
+            </h3>
+
+            <p className="text-xs text-stone-600 leading-relaxed font-normal">
+              {currentSection.subtitle || "Candid, traditional and cinematic wedding photography in Chennai — packages engineered for visual storytellers and timeless remembrance."}
+            </p>
+
+            <div className="flex items-center justify-center gap-3 pt-2">
+              <span className="inline-flex items-center gap-1.5 bg-stone-900 text-white font-serif font-bold text-xs px-4 py-2.5 rounded-xl shadow-md">
+                <span>{currentSection.buttonLabel || "Book a Session ↓"}</span>
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-white text-stone-900 font-serif font-bold text-xs px-4 py-2.5 rounded-xl border border-stone-300 shadow-xs">
+                <span>View Gallery</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     // Default Section Card Preview
     return (
       <div
@@ -862,28 +977,28 @@ function PageEditorInner() {
       {/* LEFT COLUMN: EDITABLE CONTROLS, PAGE & SECTION SELECTORS, FORM INPUTS */}
       <div className="lg:col-span-6 xl:col-span-6 space-y-6">
         {/* Page Title & Status Header */}
-        <div className="bg-[#1b1c1c] border border-stone-800 p-6 sm:p-7 rounded-3xl shadow-2xl space-y-2">
+        <div className="bg-white border border-slate-200 p-6 sm:p-7 rounded-3xl shadow-xs space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#f3e3a1] bg-[#b88c42]/10 px-3 py-1 rounded-full border border-[#b88c42]/30 font-bold">
+            <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200 font-bold">
               CMS &amp; SECTION CONTENT MANAGER
             </span>
             {savedSuccess && (
-              <span className="text-[10px] font-bold text-emerald-300 bg-emerald-500/20 px-3 py-1 rounded-full border border-emerald-500/40 animate-pulse flex items-center gap-1">
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 animate-pulse flex items-center gap-1">
                 <span className="material-symbols-outlined text-xs">check_circle</span> Saved Live!
               </span>
             )}
           </div>
-          <h1 className="font-serif text-2xl font-bold text-white tracking-wide">
+          <h1 className="font-serif text-2xl font-bold text-slate-900 tracking-wide">
             Editing {currentPage.name} Content
           </h1>
-          <p className="text-xs text-stone-400">
+          <p className="text-xs text-slate-500">
             Select any section below to update headlines, descriptions, badges, button links, cover images, and card order with live visual preview.
           </p>
         </div>
 
         {/* Section Tabs */}
-        <div className="bg-[#1b1c1c] border border-stone-800 p-3.5 rounded-2xl flex items-center gap-2 overflow-x-auto no-scrollbar">
-          <span className="text-[11px] font-mono text-stone-400 font-bold uppercase tracking-wider mr-1 shrink-0">
+        <div className="bg-white border border-slate-200 p-3.5 rounded-2xl flex items-center gap-2 overflow-x-auto no-scrollbar shadow-xs">
+          <span className="text-[11px] font-mono text-slate-500 font-bold uppercase tracking-wider mr-1 shrink-0">
             PAGE SECTIONS:
           </span>
           {currentPage.sections.map((sec) => (
@@ -893,8 +1008,8 @@ function PageEditorInner() {
               onClick={() => setSelectedSectionId(sec.id)}
               className={`px-3.5 py-1.5 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all cursor-pointer whitespace-nowrap ${
                 currentSection.id === sec.id
-                  ? "bg-amber-400/20 text-[#f3e3a1] border border-[#b88c42]"
-                  : "text-stone-400 hover:text-white hover:bg-stone-800"
+                  ? "bg-blue-600 text-white shadow-sm font-bold"
+                  : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
               }`}
             >
               {sec.name}
@@ -905,18 +1020,18 @@ function PageEditorInner() {
         {/* Step 3: Form Editor Panel */}
         <form
           onSubmit={handleSave}
-          className="bg-[#1b1c1c] border border-stone-800 rounded-3xl p-6 sm:p-7 space-y-6 shadow-2xl"
+          className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-7 space-y-6 shadow-xs"
         >
-          <div className="border-b border-stone-800 pb-4 flex items-center justify-between">
+          <div className="border-b border-slate-200 pb-4 flex items-center justify-between">
             <div>
-              <span className="text-[10px] font-mono text-[#b88c42] uppercase tracking-wider font-bold">
+              <span className="text-[10px] font-mono text-blue-600 uppercase tracking-wider font-bold">
                 EDITING SECTION
               </span>
-              <h2 className="font-serif text-xl font-bold text-white mt-0.5">
+              <h2 className="font-serif text-xl font-bold text-slate-900 mt-0.5">
                 {currentSection.name}
               </h2>
             </div>
-            <span className="text-xs font-mono text-stone-500 bg-stone-900 px-3 py-1 rounded-full border border-stone-800">
+            <span className="text-xs font-mono text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
               ID: {currentSection.id}
             </span>
           </div>
@@ -924,96 +1039,77 @@ function PageEditorInner() {
           <div className="space-y-4">
             {/* Badge Text */}
             <div>
-              <label className="block text-xs font-bold text-stone-300 uppercase tracking-wider mb-1.5 font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
                 Category / Pill Badge Text
               </label>
               <input
                 type="text"
                 value={currentSection.badge}
                 onChange={(e) => handleFieldChange("badge", e.target.value)}
-                className="w-full bg-stone-900 border border-stone-700 focus:border-[#b88c42] rounded-xl px-4 py-3 text-xs text-white focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl px-4 py-3 text-xs text-slate-900 focus:outline-none transition-all"
               />
             </div>
 
             {/* Main Headline Title */}
             <div>
-              <label className="block text-xs font-bold text-stone-300 uppercase tracking-wider mb-1.5 font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
                 Main Headline Title (H1 / H2)
               </label>
               <input
                 type="text"
                 value={currentSection.title}
                 onChange={(e) => handleFieldChange("title", e.target.value)}
-                className="w-full bg-stone-900 border border-stone-700 focus:border-[#b88c42] rounded-xl px-4 py-3 text-sm font-serif font-bold text-white focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl px-4 py-3 text-sm font-serif font-bold text-slate-900 focus:outline-none transition-all"
               />
             </div>
 
             {/* Subtitle / Tagline */}
             <div>
-              <label className="block text-xs font-bold text-stone-300 uppercase tracking-wider mb-1.5 font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
                 Subtitle / Tagline Paragraph
               </label>
               <input
                 type="text"
                 value={currentSection.subtitle}
                 onChange={(e) => handleFieldChange("subtitle", e.target.value)}
-                className="w-full bg-stone-900 border border-stone-700 focus:border-[#b88c42] rounded-xl px-4 py-3 text-xs text-white focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl px-4 py-3 text-xs text-slate-900 focus:outline-none transition-all"
               />
             </div>
 
             {/* Detailed Content / Body Text */}
             <div>
-              <label className="block text-xs font-bold text-stone-300 uppercase tracking-wider mb-1.5 font-mono">
+              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
                 Body Content Paragraph
               </label>
               <textarea
                 rows={3}
                 value={currentSection.content}
                 onChange={(e) => handleFieldChange("content", e.target.value)}
-                className="w-full bg-stone-900 border border-stone-700 focus:border-[#b88c42] rounded-xl px-4 py-3 text-xs text-white focus:outline-none"
+                className="w-full bg-slate-50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl px-4 py-3 text-xs text-slate-900 focus:outline-none transition-all"
               />
             </div>
 
             {/* Primary Image URL & Thumbnail */}
             <div>
-              <label className="block text-xs font-bold text-stone-300 uppercase tracking-wider mb-1.5 font-mono">
-                Primary Cover Image URL / Asset Path
-              </label>
-              <div className="flex gap-3 items-center">
-                <input
-                  type="text"
-                  value={currentSection.imageUrl}
-                  onChange={(e) => handleFieldChange("imageUrl", e.target.value)}
-                  placeholder="/home_Page_images/..."
-                  className="flex-1 bg-stone-900 border border-stone-700 focus:border-[#b88c42] rounded-xl px-4 py-3 text-xs text-white font-mono focus:outline-none"
-                />
-                {currentSection.imageUrl && (
-                  <div className="w-12 h-12 rounded-xl overflow-hidden border border-stone-700 shrink-0 bg-stone-800 flex items-center justify-center p-1">
-                    <img
-                      src={currentSection.imageUrl}
-                      alt="Thumbnail preview"
-                      className="w-full h-full object-contain"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = "none";
-                      }}
-                    />
-                  </div>
-                )}
-              </div>
+              <ImageUploadPicker
+                label="Primary Cover Image / Banner Asset (Click or Drag & Drop)"
+                value={currentSection.imageUrl}
+                onChange={(val) => handleFieldChange("imageUrl", val)}
+              />
             </div>
 
             {/* Image Cards & Reordering Manager */}
             {currentSection.items && currentSection.items.length > 0 && (
-              <div className="space-y-3 pt-4 border-t border-stone-800">
+              <div className="space-y-3 pt-4 border-t border-slate-200">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono uppercase font-bold text-[#f3e3a1] tracking-wider flex items-center gap-1.5">
-                    <span className="material-symbols-outlined text-sm text-[#b88c42]">swap_vert</span>
+                  <span className="text-xs font-mono uppercase font-bold text-blue-700 tracking-wider flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-sm text-blue-600">swap_vert</span>
                     IMAGE CARDS &amp; ORDER MANAGER ({currentSection.items.length})
                   </span>
                   <button
                     type="button"
                     onClick={handleAddItem}
-                    className="px-3 py-1 bg-[#b88c42]/20 text-[#f3e3a1] hover:bg-[#b88c42] hover:text-stone-950 border border-[#b88c42]/40 rounded-lg text-[10px] font-bold uppercase transition-all flex items-center gap-1"
+                    className="px-3 py-1 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 rounded-lg text-[10px] font-bold uppercase transition-all flex items-center gap-1"
                   >
                     <span className="material-symbols-outlined text-xs">add</span>
                     <span>Add Photo Card</span>
@@ -1024,11 +1120,11 @@ function PageEditorInner() {
                   {currentSection.items.map((item, idx) => (
                     <div
                       key={item.id || idx}
-                      className="bg-stone-900/80 border border-stone-700/60 p-3.5 rounded-2xl space-y-2 relative shadow-md"
+                      className="bg-slate-50 border border-slate-200 p-3.5 rounded-2xl space-y-2 relative shadow-xs"
                     >
-                      <div className="flex items-center justify-between border-b border-stone-800 pb-2">
-                        <span className="text-[10px] font-mono font-bold text-stone-400 flex items-center gap-2">
-                          <span className="w-5 h-5 rounded-full bg-[#b88c42]/20 text-[#f3e3a1] flex items-center justify-center text-[10px]">
+                      <div className="flex items-center justify-between border-b border-slate-200 pb-2">
+                        <span className="text-[10px] font-mono font-bold text-slate-600 flex items-center gap-2">
+                          <span className="w-5 h-5 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center text-[10px]">
                             {idx + 1}
                           </span>
                           Card #{idx + 1}
@@ -1039,7 +1135,7 @@ function PageEditorInner() {
                             type="button"
                             disabled={idx === 0}
                             onClick={() => handleMoveItem(idx, "up")}
-                            className="p-1 text-stone-400 hover:text-white disabled:opacity-30 rounded hover:bg-stone-800"
+                            className="p-1 text-slate-500 hover:text-slate-900 disabled:opacity-30 rounded hover:bg-slate-200"
                             title="Move Up"
                           >
                             <span className="material-symbols-outlined text-sm">arrow_upward</span>
@@ -1048,7 +1144,7 @@ function PageEditorInner() {
                             type="button"
                             disabled={idx === (currentSection.items?.length || 1) - 1}
                             onClick={() => handleMoveItem(idx, "down")}
-                            className="p-1 text-stone-400 hover:text-white disabled:opacity-30 rounded hover:bg-stone-800"
+                            className="p-1 text-slate-500 hover:text-slate-900 disabled:opacity-30 rounded hover:bg-slate-200"
                             title="Move Down"
                           >
                             <span className="material-symbols-outlined text-sm">arrow_downward</span>
@@ -1056,7 +1152,7 @@ function PageEditorInner() {
                           <button
                             type="button"
                             onClick={() => handleDeleteItem(idx)}
-                            className="p-1 text-rose-400 hover:text-rose-300 rounded hover:bg-rose-950/40"
+                            className="p-1 text-rose-500 hover:text-rose-700 rounded hover:bg-rose-50"
                             title="Delete Card"
                           >
                             <span className="material-symbols-outlined text-sm">delete</span>
@@ -1066,45 +1162,36 @@ function PageEditorInner() {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                         <div>
-                          <label className="block text-[9px] font-mono text-stone-400 uppercase font-bold mb-1">
+                          <label className="block text-[9px] font-mono text-slate-500 uppercase font-bold mb-1">
                             Card Title
                           </label>
                           <input
                             type="text"
                             value={item.title}
                             onChange={(e) => handleItemChange(idx, "title", e.target.value)}
-                            className="w-full bg-stone-950 border border-stone-800 rounded-lg px-2.5 py-1.5 text-xs text-white"
+                            className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900"
                           />
                         </div>
 
                         <div>
-                          <label className="block text-[9px] font-mono text-stone-400 uppercase font-bold mb-1">
+                          <label className="block text-[9px] font-mono text-slate-500 uppercase font-bold mb-1">
                             Category / Subtitle
                           </label>
                           <input
                             type="text"
                             value={item.category || item.subtitle || ""}
                             onChange={(e) => handleItemChange(idx, "category", e.target.value)}
-                            className="w-full bg-stone-950 border border-stone-800 rounded-lg px-2.5 py-1.5 text-xs text-white"
+                            className="w-full bg-white border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-900"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-[9px] font-mono text-stone-400 uppercase font-bold mb-1">
-                          Image URL / Asset Path
-                        </label>
-                        <div className="flex gap-2 items-center">
-                          <input
-                            type="text"
-                            value={item.imageUrl}
-                            onChange={(e) => handleItemChange(idx, "imageUrl", e.target.value)}
-                            className="flex-1 bg-stone-950 border border-stone-800 rounded-lg px-2.5 py-1.5 text-[11px] font-mono text-white"
-                          />
-                          <div className="w-8 h-8 rounded-lg overflow-hidden border border-stone-800 shrink-0 bg-stone-950">
-                            <img src={item.imageUrl} alt="" className="w-full h-full object-cover" />
-                          </div>
-                        </div>
+                        <ImageUploadPicker
+                          label="Card Photo Asset (Click or Drag & Drop)"
+                          value={item.imageUrl}
+                          onChange={(val) => handleItemChange(idx, "imageUrl", val)}
+                        />
                       </div>
                     </div>
                   ))}
@@ -1115,38 +1202,38 @@ function PageEditorInner() {
             {/* Button Label & Link */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-stone-300 uppercase tracking-wider mb-1.5 font-mono">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
                   Button Label
                 </label>
                 <input
                   type="text"
                   value={currentSection.buttonLabel}
                   onChange={(e) => handleFieldChange("buttonLabel", e.target.value)}
-                  className="w-full bg-stone-900 border border-stone-700 focus:border-[#b88c42] rounded-xl px-4 py-3 text-xs text-white focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl px-4 py-3 text-xs text-slate-900 focus:outline-none transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-stone-300 uppercase tracking-wider mb-1.5 font-mono">
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5 font-mono">
                   Button Target Link
                 </label>
                 <input
                   type="text"
                   value={currentSection.buttonLink}
                   onChange={(e) => handleFieldChange("buttonLink", e.target.value)}
-                  className="w-full bg-stone-900 border border-stone-700 focus:border-[#b88c42] rounded-xl px-4 py-3 text-xs text-white font-mono focus:outline-none"
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-blue-600 focus:bg-white rounded-xl px-4 py-3 text-xs text-slate-900 font-mono focus:outline-none transition-all"
                 />
               </div>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-stone-800 flex items-center justify-between">
-            <span className="text-[11px] text-stone-500 font-mono">
+          <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
+            <span className="text-[11px] text-slate-500 font-mono">
               Auto-syncs changes to live site
             </span>
             <button
               type="submit"
-              className="bg-[#b88c42] hover:bg-[#cca254] text-stone-950 font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-2xl transition-all shadow-xl cursor-pointer flex items-center gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-widest px-8 py-3.5 rounded-2xl transition-all shadow-md cursor-pointer flex items-center gap-2"
             >
               <span className="material-symbols-outlined text-base">publish</span>
               <span>Publish Section Edits</span>
@@ -1157,25 +1244,25 @@ function PageEditorInner() {
 
       {/* RIGHT COLUMN: STICKY LIVE WEBSITE VISUAL PREVIEW DISPLAY */}
       <div className="lg:col-span-6 xl:col-span-6 space-y-4 sticky top-6">
-        <div className="flex items-center justify-between bg-[#1b1c1c] border border-stone-800 p-4 rounded-2xl shadow-xl">
+        <div className="flex items-center justify-between bg-white border border-slate-200 p-4 rounded-2xl shadow-xs">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-mono text-[#f3e3a1] font-bold uppercase tracking-wider flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]"></span>
+            <span className="text-xs font-mono text-blue-700 font-bold uppercase tracking-wider flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
               LIVE VISUAL PREVIEW
             </span>
-            <span className="hidden sm:inline-block text-[10px] font-mono text-stone-500 bg-stone-900 px-2.5 py-0.5 rounded-full border border-stone-800">
+            <span className="hidden sm:inline-block text-[10px] font-mono text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">
               dhilipstudio.com{currentPage.path}
             </span>
           </div>
 
-          <div className="flex items-center gap-1 bg-stone-900 p-1 rounded-xl border border-stone-800">
+          <div className="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
             <button
               type="button"
               onClick={() => setPreviewTheme("light")}
               className={`px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors ${
                 previewTheme === "light"
-                  ? "bg-[#b88c42] text-stone-950"
-                  : "text-stone-400 hover:text-white"
+                  ? "bg-blue-600 text-white"
+                  : "text-slate-600 hover:text-slate-900"
               }`}
             >
               Light
@@ -1185,8 +1272,8 @@ function PageEditorInner() {
               onClick={() => setPreviewTheme("dark")}
               className={`px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-colors ${
                 previewTheme === "dark"
-                  ? "bg-[#b88c42] text-stone-950"
-                  : "text-stone-400 hover:text-white"
+                  ? "bg-blue-600 text-white"
+                  : "text-slate-600 hover:text-slate-900"
               }`}
             >
               Dark
@@ -1195,7 +1282,7 @@ function PageEditorInner() {
         </div>
 
         {/* Live Website Canvas Container */}
-        <div className="rounded-3xl border border-stone-800 bg-[#121314] p-2 shadow-2xl overflow-hidden min-h-[600px]">
+        <div className="rounded-3xl border border-slate-200 bg-slate-50 p-2 shadow-xs overflow-hidden min-h-[600px]">
           {renderExactSectionPreview()}
         </div>
       </div>

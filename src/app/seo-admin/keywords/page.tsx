@@ -1,67 +1,93 @@
 "use client";
 
-import React from "react";
-import { initialKeywords } from "@/lib/adminData";
+import React, { useState } from "react";
+import { DataTable, Column } from "@/components/admin/ui/DataTable";
+import { initialKeywords, TargetKeyword } from "@/lib/adminData";
 
 export default function KeywordRankTracker() {
-  return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#1b1c1c] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-2xl">
-        <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#f3e3a1] bg-[#b88c42]/10 px-3 py-1 rounded-full border border-[#b88c42]/30 font-bold">
-            LOCAL SEARCH PERFORMANCE
+  const [keywords, setKeywords] = useState<TargetKeyword[]>(initialKeywords);
+
+  const columns: Column<TargetKeyword>[] = [
+    {
+      header: "ID",
+      accessorKey: "id",
+      cell: (row) => <span className="font-mono text-blue-600 font-bold">{row.id}</span>,
+    },
+    {
+      header: "Search Keyword Term",
+      accessorKey: "keyword",
+      cell: (row) => <span className="font-serif font-bold text-sm text-slate-900">{row.keyword}</span>,
+    },
+    {
+      header: "Target Route",
+      accessorKey: "targetRoute",
+      cell: (row) => <span className="font-mono text-blue-600 font-semibold">{row.targetRoute}</span>,
+    },
+    {
+      header: "Google Rank & Trend",
+      cell: (row) => (
+        <div className="flex items-center gap-2 font-mono text-xs">
+          <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold border border-emerald-200">
+            Rank #{row.currentRank}
           </span>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide mt-2">
-            Keyword Target Matrix
-          </h1>
-          <p className="text-xs text-stone-400 mt-1">
-            Track organic search rank positions for high-intent Chennai wedding photography terms.
+          <span className="text-emerald-700 font-bold text-[11px]">
+            ↑ {row.previousRank - row.currentRank >= 0 ? `+${row.previousRank - row.currentRank}` : row.previousRank - row.currentRank}
+          </span>
+        </div>
+      ),
+    },
+    {
+      header: "Google Maps 3-Pack",
+      accessorKey: "localPackRank",
+      cell: (row) => (
+        <span className="px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 font-mono text-[10px] font-bold border border-blue-200">
+          Maps Rank #{row.localPackRank} 📍
+        </span>
+      ),
+    },
+    {
+      header: "Monthly Vol",
+      accessorKey: "monthlySearchVolume",
+      cell: (row) => <span className="font-mono text-slate-700 font-semibold">{row.monthlySearchVolume.toLocaleString()} / mo</span>,
+    },
+    {
+      header: "SEO Difficulty",
+      accessorKey: "difficulty",
+      cell: (row) => (
+        <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-amber-50 text-amber-700 border border-amber-200">
+          {row.difficulty}
+        </span>
+      ),
+    },
+  ];
+
+  return (
+    <div className="space-y-6 font-sans text-slate-900">
+      <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
+        <div>
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-600 font-bold">
+            LOCAL PACK &amp; ORGANIC SEARCH RANKINGS
+          </span>
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-wide mt-1">
+            Tracked Keyword Rankings &amp; Competitor Matrix
+          </h2>
+          <p className="text-xs text-slate-500 mt-1 font-sans">
+            Monitor Google organic search ranks, Google Maps local 3-pack visibility, and competitor comparison positions.
           </p>
         </div>
 
-        <button className="bg-[#b88c42] hover:bg-[#cca254] text-stone-950 font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-xl cursor-pointer">
-          + Add Target Keyword
+        <button className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+          <span className="material-symbols-outlined text-base">key</span>
+          <span>+ Add Keyword</span>
         </button>
       </div>
 
-      <div className="bg-[#1b1c1c] border border-stone-800 rounded-3xl overflow-hidden shadow-2xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-stone-300">
-            <thead className="bg-stone-900/90 uppercase tracking-wider text-stone-400 text-[10px] font-mono border-b border-stone-800">
-              <tr>
-                <th className="p-4">ID</th>
-                <th className="p-4">Search Keyword Term</th>
-                <th className="p-4">Target Page Route</th>
-                <th className="p-4">Google Rank</th>
-                <th className="p-4">Monthly Search Vol.</th>
-                <th className="p-4">SEO Competition</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-800/60">
-              {initialKeywords.map((kw) => (
-                <tr key={kw.id} className="hover:bg-stone-800/40 transition-colors">
-                  <td className="p-4 font-mono font-bold text-[#f3e3a1]">{kw.id}</td>
-                  <td className="p-4 font-semibold text-white font-serif text-sm">{kw.keyword}</td>
-                  <td className="p-4 font-mono text-stone-300">{kw.targetRoute}</td>
-                  <td className="p-4">
-                    <span className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-[#b88c42]/20 text-[#f3e3a1] font-bold text-xs border border-[#b88c42]/40">
-                      <span>Rank #{kw.currentRank}</span>
-                      <span className="text-[10px]">🏆</span>
-                    </span>
-                  </td>
-                  <td className="p-4 font-mono text-stone-200">{kw.monthlySearchVolume.toLocaleString()} / mo</td>
-                  <td className="p-4">
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                      {kw.difficulty}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <DataTable
+        data={keywords}
+        columns={columns}
+        searchPlaceholder="Search keywords by term, target route..."
+        searchField="keyword"
+      />
     </div>
   );
 }

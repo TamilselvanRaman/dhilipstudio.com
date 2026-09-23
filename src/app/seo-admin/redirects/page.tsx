@@ -1,65 +1,82 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { DataTable, Column } from "@/components/admin/ui/DataTable";
+import { initialRedirects, RedirectRule } from "@/lib/adminData";
 
 export default function RedirectsManager() {
-  const redirects = [
-    { id: "R-1", source: "/blog/admin/news.php", destination: "/seo-admin/blog", type: "301 Permanent" },
-    { id: "R-2", source: "/gallery-old.php", destination: "/gallery", type: "301 Permanent" },
-    { id: "R-3", source: "/contact-us.html", destination: "/contact", type: "301 Permanent" },
+  const [redirects, setRedirects] = useState<RedirectRule[]>(initialRedirects);
+
+  const columns: Column<RedirectRule>[] = [
+    {
+      header: "Rule ID",
+      accessorKey: "id",
+      cell: (row) => <span className="font-mono text-blue-600 font-bold">{row.id}</span>,
+    },
+    {
+      header: "Source Path",
+      accessorKey: "sourcePath",
+      cell: (row) => <span className="font-mono text-amber-700 font-semibold">{row.sourcePath}</span>,
+    },
+    {
+      header: "Target Destination",
+      accessorKey: "targetPath",
+      cell: (row) => <span className="font-mono text-emerald-700 font-bold">{row.targetPath}</span>,
+    },
+    {
+      header: "Redirect Type",
+      accessorKey: "type",
+      cell: (row) => (
+        <span className="px-2.5 py-1 rounded-full text-[10px] font-mono font-bold uppercase bg-blue-50 text-blue-700 border border-blue-200">
+          HTTP {row.type} PERMANENT
+        </span>
+      ),
+    },
+    {
+      header: "Hit Count",
+      accessorKey: "hitCount",
+      cell: (row) => <span className="font-mono text-slate-800 font-bold">{row.hitCount.toLocaleString()} Hits</span>,
+    },
+    {
+      header: "Created Date",
+      accessorKey: "createdAt",
+      cell: (row) => <span className="font-mono text-slate-500">{row.createdAt}</span>,
+    },
   ];
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#1b1c1c] border border-stone-800 p-6 sm:p-8 rounded-3xl shadow-2xl">
+    <div className="space-y-6 font-sans text-slate-900">
+      <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#f3e3a1] bg-[#b88c42]/10 px-3 py-1 rounded-full border border-[#b88c42]/30 font-bold">
-            LEGACY LINK PRESERVATION
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-600 font-bold">
+            LEGACY LINK EQUITY PRESERVATION
           </span>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide mt-2">
-            301 URL Redirect Manager
-          </h1>
-          <p className="text-xs text-stone-400 mt-1">
-            Preserve SEO domain authority by redirecting legacy PHP/HTML URLs to new Next.js routes.
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-wide mt-1">
+            301 URL Redirects &amp; Broken Link Detector
+          </h2>
+          <p className="text-xs text-slate-500 mt-1 font-sans">
+            Preserve domain authority by mapping legacy URLs to Next.js paths. Bulk import/export CSV support.
           </p>
         </div>
 
-        <button className="bg-[#b88c42] hover:bg-[#cca254] text-stone-950 font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-xl cursor-pointer">
-          + Add 301 Redirect Rule
-        </button>
-      </div>
+        <div className="flex items-center gap-2">
+          <button className="px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 border border-slate-200 text-xs font-semibold hover:bg-slate-200 cursor-pointer">
+            CSV Import / Export
+          </button>
 
-      <div className="bg-[#1b1c1c] border border-stone-800 rounded-3xl overflow-hidden shadow-2xl">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-stone-300">
-            <thead className="bg-stone-900/90 uppercase tracking-wider text-stone-400 text-[10px] font-mono border-b border-stone-800">
-              <tr>
-                <th className="p-4">Rule ID</th>
-                <th className="p-4">Legacy Source URL</th>
-                <th className="p-4">Destination Path</th>
-                <th className="p-4">Redirect Type</th>
-                <th className="p-4 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-800/60">
-              {redirects.map((r) => (
-                <tr key={r.id} className="hover:bg-stone-800/40 transition-colors">
-                  <td className="p-4 font-mono font-bold text-[#f3e3a1]">{r.id}</td>
-                  <td className="p-4 font-mono text-stone-300">{r.source}</td>
-                  <td className="p-4 font-mono text-[#f3e3a1]">{r.destination}</td>
-                  <td className="p-4 font-bold text-[#b88c42]">{r.type}</td>
-                  <td className="p-4 text-right">
-                    <button className="px-3 py-1.5 rounded-lg bg-stone-900 hover:bg-[#b88c42] hover:text-stone-950 text-stone-200 text-xs font-semibold border border-stone-700 transition-all">
-                      Edit Rule
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <button className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+            <span className="material-symbols-outlined text-base">fork_right</span>
+            <span>+ Add 301 Rule</span>
+          </button>
         </div>
       </div>
+
+      <DataTable
+        data={redirects}
+        columns={columns}
+        searchPlaceholder="Search redirects by source or target path..."
+        searchField="sourcePath"
+      />
     </div>
   );
 }

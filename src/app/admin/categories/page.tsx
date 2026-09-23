@@ -1,48 +1,47 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { initialCategories, CategoryItem } from "@/lib/adminData";
 
 export default function CategoryManager() {
-  const categories = [
-    { id: "CAT-1", name: "Sacred Muhurtham", slug: "sacred-muhurtham", itemsCount: 180 },
-    { id: "CAT-2", name: "Pre-Wedding Beach Films", slug: "pre-wedding", itemsCount: 95 },
-    { id: "CAT-3", name: "Candid Expressions", slug: "candid-wedding", itemsCount: 140 },
-    { id: "CAT-4", name: "Maternity & Milestone", slug: "maternity-milestone", itemsCount: 85 },
-  ];
+  const [categories, setCategories] = useState<CategoryItem[]>(initialCategories);
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#1b1c1c] border border-stone-800 p-6 rounded-2xl shadow-xl">
+    <div className="space-y-6 font-sans text-slate-900">
+      <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#f3e3a1]">
-            PORTFOLIO CLASSIFICATIONS
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-600 font-bold">
+            MASTER TAXONOMY &amp; TAGS
           </span>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide mt-1">
-            Category Manager
-          </h1>
-          <p className="text-xs text-stone-400 mt-1">
-            Manage photography categories, filter tags, and URL slugs.
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-wide mt-1">
+            Master Category Taxonomy
+          </h2>
+          <p className="text-xs text-slate-500 mt-1 font-sans">
+            Manage shoot classification categories across Gallery, Blog, and Pricing packages.
           </p>
         </div>
 
-        <button className="bg-[#b88c42] hover:bg-[#cca254] text-stone-950 font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-xl transition-all shadow-lg cursor-pointer">
-          + Add Category
+        <button className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md cursor-pointer">
+          <span className="material-symbols-outlined text-base">category</span>
+          <span>+ Add Category</span>
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((cat) => (
-          <div key={cat.id} className="bg-[#1b1c1c] border border-stone-800 p-5 rounded-2xl space-y-3">
+          <div key={cat.id} className="bg-white border border-slate-200 hover:border-blue-500 rounded-2xl p-5 space-y-3 shadow-xs transition-all">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-mono font-bold text-[#f3e3a1]">{cat.id}</span>
-              <span className="text-xs font-mono text-stone-400">{cat.slug}</span>
+              <span className="text-xs font-mono font-bold text-blue-600">{cat.id}</span>
+              <span className="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200 font-semibold">
+                /{cat.slug}
+              </span>
             </div>
-            <h3 className="font-serif text-base font-bold text-white">{cat.name}</h3>
-            <p className="text-xs text-stone-400">{cat.itemsCount} Monographs</p>
-            <button className="w-full mt-2 py-2 rounded-xl bg-stone-800 hover:bg-[#b88c42] hover:text-stone-950 text-stone-200 text-xs font-bold transition-all">
-              Edit Category
-            </button>
+            <h3 className="font-serif text-base font-bold text-slate-900">{cat.name}</h3>
+            <p className="text-xs text-slate-500 font-sans">{cat.description}</p>
+            <div className="pt-2 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-mono">
+              <span>{cat.count} Monographs Linked</span>
+              <button className="text-blue-600 hover:text-blue-700 font-bold cursor-pointer">Edit &rarr;</button>
+            </div>
           </div>
         ))}
       </div>

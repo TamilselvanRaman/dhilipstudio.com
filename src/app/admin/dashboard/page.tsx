@@ -2,158 +2,220 @@
 
 import React from "react";
 import Link from "next/link";
-import { initialBookings, initialInquiries } from "@/lib/adminData";
+import { StatCard } from "@/components/admin/ui/StatCard";
+import { StatusPill } from "@/components/admin/ui/StatusPill";
+import { DataTable, Column } from "@/components/admin/ui/DataTable";
+import { initialBookings, initialInquiries, Inquiry } from "@/lib/adminData";
 
 export default function StudioAdminDashboard() {
+  const inquiryColumns: Column<Inquiry>[] = [
+    {
+      header: "Lead ID",
+      accessorKey: "id",
+      cell: (row) => <span className="font-mono text-blue-600 font-bold">{row.id}</span>,
+    },
+    {
+      header: "Client Name",
+      accessorKey: "clientName",
+      cell: (row) => <span className="font-bold text-slate-900">{row.clientName}</span>,
+    },
+    {
+      header: "Source",
+      accessorKey: "source",
+      cell: (row) => (
+        <span className="px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[10px] font-mono text-blue-700 font-bold">
+          {row.source}
+        </span>
+      ),
+    },
+    {
+      header: "Event Date",
+      accessorKey: "eventDate",
+      cell: (row) => <span className="font-mono text-slate-700 font-medium">{row.eventDate}</span>,
+    },
+    {
+      header: "Venue",
+      accessorKey: "venue",
+      cell: (row) => <span className="max-w-xs truncate block text-slate-600">{row.venue}</span>,
+    },
+    {
+      header: "Budget Range",
+      accessorKey: "budget",
+      cell: (row) => <span className="font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">{row.budget}</span>,
+    },
+    {
+      header: "Status",
+      accessorKey: "status",
+      cell: (row) => <StatusPill status={row.status} size="sm" />,
+    },
+    {
+      header: "Quick Reply",
+      cell: (row) => (
+        <a
+          href={`https://wa.me/${row.phone.replace(/[^0-9]/g, "")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px] uppercase tracking-wider transition-colors shadow-xs"
+        >
+          <span>WhatsApp</span>
+          <span className="material-symbols-outlined text-[12px]">send</span>
+        </a>
+      ),
+    },
+  ];
+
   return (
-    <div className="space-y-8">
-      {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#1b1c1c] border border-stone-800 p-6 rounded-2xl shadow-xl">
+    <div className="space-y-6">
+      {/* Top Banner & Quick Actions */}
+      <div className="bg-white border border-slate-200 p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 shadow-xs">
         <div>
-          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-[#f3e3a1]">
-            DHILIP STUDIO CONTROL CENTER
+          <span className="text-[10px] font-mono uppercase tracking-[0.25em] text-blue-600 font-bold">
+            ENTERPRISE STUDIO OPERATIONS
           </span>
-          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white tracking-wide mt-1">
-            Studio Admin Dashboard
-          </h1>
-          <p className="text-xs text-stone-400 mt-1">
-            Manage client bookings, leads, page content, monographs &amp; video films.
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-slate-900 tracking-wide mt-1">
+            Studio Business Overview
+          </h2>
+          <p className="text-xs text-slate-500 mt-1 font-sans">
+            Real-time KPIs, shoot schedules, leads pipeline, and monograph content management.
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
-          <Link
-            href="/admin/pages"
-            className="inline-flex items-center gap-2 bg-[#b88c42] hover:bg-[#cca254] text-stone-950 font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl transition-all shadow-lg"
-          >
-            <span className="material-symbols-outlined text-base">edit_note</span>
-            <span>Edit Page Content</span>
-          </Link>
-          <Link
-            href="/admin/bookings"
-            className="inline-flex items-center gap-2 bg-stone-800 hover:bg-stone-700 text-stone-200 font-bold text-xs uppercase tracking-wider px-4 py-2.5 rounded-xl border border-stone-700 transition-all"
-          >
-            <span className="material-symbols-outlined text-base">calendar_month</span>
-            <span>Bookings</span>
-          </Link>
-        </div>
-      </div>
-
-      {/* Overview Metric Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-[#1b1c1c] border border-stone-800 p-5 rounded-2xl space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">
-              Total Revenue
-            </span>
-            <span className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
-              <span className="material-symbols-outlined text-lg">payments</span>
-            </span>
-          </div>
-          <p className="font-serif text-2xl font-bold text-white">₹5,10,000</p>
-          <p className="text-[11px] text-emerald-400 font-medium">↑ 18% from last month</p>
-        </div>
-
-        <div className="bg-[#1b1c1c] border border-stone-800 p-5 rounded-2xl space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">
-              Confirmed Shoots
-            </span>
-            <span className="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
-              <span className="material-symbols-outlined text-lg">event_available</span>
-            </span>
-          </div>
-          <p className="font-serif text-2xl font-bold text-white">{initialBookings.length}</p>
-          <p className="text-[11px] text-stone-400 font-medium">Next shoot: Nov 14, 2026</p>
-        </div>
-
-        <div className="bg-[#1b1c1c] border border-stone-800 p-5 rounded-2xl space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">
-              New Leads &amp; Inquiries
-            </span>
-            <span className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">
-              <span className="material-symbols-outlined text-lg">mark_email_unread</span>
-            </span>
-          </div>
-          <p className="font-serif text-2xl font-bold text-white">{initialInquiries.length}</p>
-          <p className="text-[11px] text-blue-400 font-medium">Requires follow-up</p>
-        </div>
-
-        <div className="bg-[#1b1c1c] border border-stone-800 p-5 rounded-2xl space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold text-stone-400 uppercase tracking-wider">
-              Published Monographs
-            </span>
-            <span className="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">
-              <span className="material-symbols-outlined text-lg">photo_library</span>
-            </span>
-          </div>
-          <p className="font-serif text-2xl font-bold text-white">500+</p>
-          <p className="text-[11px] text-stone-400 font-medium">Across 8 category collections</p>
-        </div>
-      </div>
-
-      {/* Recent Inquiries Table */}
-      <div className="bg-[#1b1c1c] border border-stone-800 rounded-2xl overflow-hidden shadow-xl">
-        <div className="p-5 border-b border-stone-800 flex items-center justify-between">
-          <div>
-            <h2 className="font-serif text-lg font-bold text-white">Recent Client Inquiries</h2>
-            <p className="text-xs text-stone-400">Leads captured via website forms and WhatsApp</p>
-          </div>
+        <div className="flex flex-wrap items-center gap-2.5 shrink-0">
           <Link
             href="/admin/inquiries"
-            className="text-xs font-bold text-[#f3e3a1] hover:underline flex items-center gap-1"
+            className="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-xs border border-slate-200 flex items-center gap-2 transition-all"
           >
-            <span>View All Leads</span>
-            <span className="material-symbols-outlined text-sm">arrow_forward</span>
+            <span className="material-symbols-outlined text-base text-blue-600">
+              view_kanban
+            </span>
+            <span>Leads Kanban</span>
+          </Link>
+
+          <Link
+            href="/admin/pages"
+            className="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 transition-all shadow-md"
+          >
+            <span className="material-symbols-outlined text-base">edit_note</span>
+            <span>Edit Public Pages</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* KPI StatCards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StatCard
+          title="Total Revenue (YTD)"
+          value="₹5,10,000"
+          change="+18% vs last month"
+          changeType="increase"
+          icon="payments"
+          subtext="Includes ₹80k advance collected"
+        />
+        <StatCard
+          title="Confirmed Shoots"
+          value={initialBookings.length}
+          change="3 upcoming"
+          changeType="increase"
+          icon="calendar_month"
+          subtext="Next shoot: Nov 14, Mylapore Palace"
+        />
+        <StatCard
+          title="New Leads & Inquiries"
+          value={initialInquiries.length}
+          change="2 high intent"
+          changeType="neutral"
+          icon="mark_email_unread"
+          subtext="Avg response time: 14 mins"
+        />
+        <StatCard
+          title="Published Monographs"
+          value="500+"
+          change="8 Collections"
+          changeType="increase"
+          icon="photo_library"
+          subtext="4K uncompressed webp CDN"
+        />
+      </div>
+
+      {/* Revenue Trend & Upcoming Shoots Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Revenue Trend Chart SVG */}
+        <div className="lg:col-span-8 bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-xs">
+          <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+            <div>
+              <h3 className="font-serif font-bold text-base text-slate-900">Revenue & Booking Growth Trend</h3>
+              <p className="text-xs text-slate-500">Monthly financial progress over past 6 months</p>
+            </div>
+            <span className="text-xs font-mono text-blue-700 font-semibold bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-200">
+              FY 2026-27
+            </span>
+          </div>
+
+          <div className="h-56 w-full flex items-end justify-between gap-2 pt-4 px-2">
+            {[
+              { month: "Apr", rev: "3.2L", height: "45%" },
+              { month: "May", rev: "4.1L", height: "60%" },
+              { month: "Jun", rev: "3.8L", height: "55%" },
+              { month: "Jul", rev: "4.8L", height: "75%" },
+              { month: "Aug", rev: "5.1L", height: "85%" },
+              { month: "Sep", rev: "5.8L", height: "95%" },
+            ].map((bar, i) => (
+              <div key={i} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end">
+                <span className="text-[10px] font-mono text-blue-600 font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                  {bar.rev}
+                </span>
+                <div
+                  style={{ height: bar.height }}
+                  className="w-full max-w-[44px] bg-gradient-to-t from-blue-400 via-blue-600 to-blue-700 rounded-t-lg group-hover:brightness-110 transition-all shadow-sm"
+                />
+                <span className="text-[11px] font-mono text-slate-500">{bar.month}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Upcoming Shoots Timeline Widget */}
+        <div className="lg:col-span-4 bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-xs flex flex-col justify-between">
+          <div className="border-b border-slate-200 pb-3 flex items-center justify-between">
+            <h3 className="font-serif font-bold text-base text-slate-900">Upcoming Shoots (30 Days)</h3>
+            <Link href="/admin/bookings" className="text-xs font-mono text-blue-600 font-bold hover:underline">
+              View All &rarr;
+            </Link>
+          </div>
+
+          <div className="space-y-3 flex-1 overflow-y-auto">
+            {initialBookings.map((b) => (
+              <div key={b.id} className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                <div className="flex items-center justify-between text-xs">
+                  <span className="font-serif font-bold text-slate-900">{b.clientName}</span>
+                  <StatusPill status={b.status} size="sm" />
+                </div>
+                <div className="text-[11px] text-slate-500">{b.eventType}</div>
+                <div className="flex items-center justify-between text-[10px] font-mono text-slate-600 pt-1">
+                  <span>📅 {b.eventDate}</span>
+                  <span className="text-blue-600 font-semibold">{b.location.split(",")[0]}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Recent Inquiries DataTable */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <h3 className="font-serif font-bold text-lg text-slate-900">Recent Inquiries &amp; Leads Table</h3>
+          <Link href="/admin/inquiries" className="text-xs font-mono text-blue-600 font-bold hover:underline">
+            Open Kanban Board &rarr;
           </Link>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs text-stone-300">
-            <thead className="bg-stone-900/80 uppercase tracking-wider text-stone-400 text-[10px] border-b border-stone-800">
-              <tr>
-                <th className="p-4">ID</th>
-                <th className="p-4">Client Name</th>
-                <th className="p-4">Phone / WhatsApp</th>
-                <th className="p-4">Event Date</th>
-                <th className="p-4">Venue</th>
-                <th className="p-4">Budget</th>
-                <th className="p-4">Status</th>
-                <th className="p-4 text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-stone-800">
-              {initialInquiries.map((inq) => (
-                <tr key={inq.id} className="hover:bg-stone-900/50 transition-colors">
-                  <td className="p-4 font-mono font-bold text-[#f3e3a1]">{inq.id}</td>
-                  <td className="p-4 font-semibold text-white">{inq.clientName}</td>
-                  <td className="p-4 font-mono">{inq.phone}</td>
-                  <td className="p-4">{inq.eventDate}</td>
-                  <td className="p-4 max-w-xs truncate">{inq.venue}</td>
-                  <td className="p-4 font-mono text-stone-200">{inq.budget}</td>
-                  <td className="p-4">
-                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-blue-500/20 text-blue-300 border border-blue-500/40">
-                      {inq.status}
-                    </span>
-                  </td>
-                  <td className="p-4 text-right">
-                    <a
-                      href={`https://wa.me/${inq.phone.replace(/[^0-9]/g, "")}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[10px] tracking-wider uppercase transition-colors"
-                    >
-                      <span>WhatsApp</span>
-                      <span className="material-symbols-outlined text-[12px]">send</span>
-                    </a>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <DataTable
+          data={initialInquiries}
+          columns={inquiryColumns}
+          searchPlaceholder="Search leads by client name, venue, budget..."
+          searchField="clientName"
+        />
       </div>
     </div>
   );

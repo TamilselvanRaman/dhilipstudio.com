@@ -6,6 +6,20 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-primary: #0E0E0F;
+    --bg-surface: #17171A;
+    --bg-surface-2: #1F1F23;
+    --border-subtle: #2A2A2E;
+    --accent-gold: #C89B3C;
+    --accent-gold-soft: #E8C978;
+    --text-primary: #F5F5F2;
+    --text-secondary: #9A9A9E;
+    --success: #2ECC71;
+    --warning: #F5B942;
+    --danger: #E5484D;
+    --info: #4C9AFF;
+  }
   html, body {
     margin: 0;
     padding: 0;
@@ -165,15 +179,36 @@
   animation: floatingBob 6.5s ease-in-out 1.8s infinite;
 }
 
-/* 12-Dot Rotating Pulse Loader Animation */
-@keyframes dotPulse {
+/* Open & Scroll Reveal Keyframe Animations */
+@keyframes openRevealScale {
   0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(24px);
+    filter: blur(8px);
+  }
+  100% {
     opacity: 1;
-    transform: scale(1);
+    transform: scale(1) translateY(0);
+    filter: blur(0px);
   }
-  100% { 
-    opacity: 0.15;
-    transform: scale(0.65);
+}
+
+@keyframes scrollSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
   }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-open-reveal {
+  animation: openRevealScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scroll-reveal {
+  animation: scrollSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 

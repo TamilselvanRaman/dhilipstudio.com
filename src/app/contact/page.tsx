@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CustomDropdown } from "@/components/ui/CustomDropdown";
 
 export default function ContactPage() {
+  const [mapLoaded, setMapLoaded] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -47,7 +49,34 @@ export default function ContactPage() {
             <div className="lg:col-span-6 flex flex-col gap-6 order-2 lg:order-1">
               
               {/* TOP: MAP Embed Frame */}
-              <div className="bg-white rounded-[28px] border border-stone-200/90 shadow-xl overflow-hidden relative h-72 sm:h-80 md:h-[340px] shrink-0">
+              <div className="bg-stone-900 rounded-[28px] border border-stone-200/90 shadow-xl overflow-hidden relative h-72 sm:h-80 md:h-[340px] shrink-0">
+                {/* Map Skeleton / Spinner Overlay while loading */}
+                {!mapLoaded && (
+                  <div className="absolute inset-0 z-20 bg-stone-900 text-white flex flex-col items-center justify-center p-6 text-center space-y-3 animate-pulse">
+                    <div className="relative">
+                      <div className="w-14 h-14 rounded-full bg-[#b88c42]/20 border border-[#b88c42]/40 flex items-center justify-center text-[#b88c42] animate-bounce">
+                        <span className="material-symbols-outlined text-3xl">location_on</span>
+                      </div>
+                      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-2 rounded-full bg-[#b88c42]/30 blur-xs"></span>
+                    </div>
+
+                    <div className="space-y-1">
+                      <span className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#f3e3a1] block">
+                        DHILIP STUDIO PORUR
+                      </span>
+                      <p className="text-[11px] text-stone-300 font-sans">
+                        Loading Interactive Google Map...
+                      </p>
+                    </div>
+
+                    <div className="flex items-center justify-center gap-1.5 pt-1">
+                      <span className="w-2 h-2 rounded-full bg-[#b88c42] animate-ping"></span>
+                      <span className="w-2 h-2 rounded-full bg-[#b88c42] animate-pulse"></span>
+                      <span className="w-2 h-2 rounded-full bg-[#b88c42]"></span>
+                    </div>
+                  </div>
+                )}
+
                 <iframe
                   title="Dhilip Studio Porur Google Maps"
                   src="https://maps.google.com/maps?q=13.0377,80.1514&z=16&output=embed"
@@ -55,11 +84,13 @@ export default function ContactPage() {
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen={false}
-                  loading="lazy"
+                  loading="eager"
+                  onLoad={() => setMapLoaded(true)}
+                  className={`w-full h-full transition-opacity duration-700 ${mapLoaded ? "opacity-100" : "opacity-0"}`}
                 />
 
                 {/* Floating Badge on Map */}
-                <div className="absolute top-4 right-4 bg-stone-900/90 text-white px-3 py-1.5 rounded-xl border border-stone-700/80 backdrop-blur-md flex items-center gap-2 text-xs font-mono shadow-lg">
+                <div className="absolute top-4 right-4 bg-stone-900/90 text-white px-3 py-1.5 rounded-xl border border-stone-700/80 backdrop-blur-md flex items-center gap-2 text-xs font-mono shadow-lg z-30">
                   <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse"></span>
                   <span>PORUR, CHENNAI</span>
                 </div>
@@ -188,32 +219,35 @@ export default function ContactPage() {
                           <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
                             EVENT TYPE
                           </label>
-                          <select
+                          <CustomDropdown
                             value={formData.eventType}
-                            onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
-                          >
-                            <option value="Wedding Photography">Wedding Photography</option>
-                            <option value="Candid Photography">Candid Photography</option>
-                            <option value="Brahmin Wedding Photography">Brahmin Wedding Photography</option>
-                            <option value="Pre/Post-Wedding Shoot">Pre/Post-Wedding Shoot</option>
-                            <option value="Engagement Photography">Engagement Photography</option>
-                            <option value="Maternity Photoshoot">Maternity Photoshoot</option>
-                            <option value="Newborn Baby Photoshoot">Newborn Baby Photoshoot</option>
-                            <option value="Birthday Photography">Birthday Photography</option>
-                          </select>
+                            onChange={(val) => setFormData({ ...formData, eventType: val })}
+                            theme="gold"
+                            options={[
+                              { value: "Wedding Photography", label: "Wedding Photography", icon: "photo_camera" },
+                              { value: "Candid Photography", label: "Candid Photography", icon: "camera" },
+                              { value: "Brahmin Wedding Photography", label: "Brahmin Wedding Photography", icon: "auto_awesome" },
+                              { value: "Pre/Post-Wedding Shoot", label: "Pre/Post-Wedding Shoot", icon: "favorite" },
+                              { value: "Engagement Photography", label: "Engagement Photography", icon: "diamond" },
+                              { value: "Maternity Photoshoot", label: "Maternity Photoshoot", icon: "child_care" },
+                              { value: "Newborn Baby Photoshoot", label: "Newborn Baby Photoshoot", icon: "face" },
+                              { value: "Birthday Photography", label: "Birthday Photography", icon: "cake" },
+                            ]}
+                          />
                         </div>
 
                         <div>
                           <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
                             TENTATIVE EVENT DATE
                           </label>
-                          <input
-                            type="date"
-                            value={formData.date}
-                            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
-                          />
+                          <div className="relative">
+                            <input
+                              type="date"
+                              value={formData.date}
+                              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                              className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] focus:ring-2 focus:ring-[#b88c42]/20 text-sm bg-stone-50/50 hover:bg-white text-stone-800 transition-all font-sans cursor-pointer"
+                            />
+                          </div>
                         </div>
                       </div>
 
