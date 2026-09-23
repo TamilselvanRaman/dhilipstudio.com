@@ -1,6 +1,4 @@
-"use client";
-
-import React, { use } from "react";
+import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/layout/Header";
@@ -11,8 +9,14 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-export default function BlogDetailPage({ params }: PageProps) {
-  const { slug } = use(params);
+export async function generateStaticParams() {
+  return blogArticles.map((article) => ({
+    slug: article.slug,
+  }));
+}
+
+export default async function BlogDetailPage({ params }: PageProps) {
+  const { slug } = await params;
   const article = blogArticles.find((a) => a.slug === slug);
 
   if (!article) {
