@@ -190,11 +190,7 @@ export const Hero3DCarousel: React.FC = () => {
 
   return (
     <div
-      className={`w-full flex flex-col items-center transition-all duration-1000 delay-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-        isRevealed
-          ? "opacity-100 translate-y-0 scale-100"
-          : "opacity-0 translate-y-10 scale-95 pointer-events-none"
-      }`}
+      className="w-full flex flex-col items-center"
       onMouseEnter={() => setIsAutoPlayPaused(true)}
       onMouseLeave={() => setIsAutoPlayPaused(false)}
     >
