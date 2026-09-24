@@ -57,9 +57,17 @@ export default function RootLayout({
           media="(min-width: 641px)"
           fetchPriority="high"
         />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var l = document.createElement('link');
+                l.rel = 'stylesheet';
+                l.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap';
+                document.head.appendChild(l);
+              })();
+            `,
+          }}
         />
       </head>
       <body className="bg-surface-container-lowest text-on-surface antialiased">
