@@ -139,6 +139,8 @@ export const PortfolioCoverflowSection: React.FC = () => {
             className="w-full h-full object-cover"
             src={prevItem.coverImage}
             alt={prevItem.title}
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/40"></div>
         </div>
@@ -183,6 +185,8 @@ export const PortfolioCoverflowSection: React.FC = () => {
                   className="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
                   src={currentItem.coverImage}
                   alt={currentItem.title}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-stone-950/80 to-black/85"></div>
 
@@ -232,6 +236,8 @@ export const PortfolioCoverflowSection: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 pointer-events-none"
                   src={currentItem.coverImage}
                   alt={currentItem.title}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-4 sm:p-5 text-white pointer-events-none">
                   <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#f3e3a1]">
@@ -305,6 +311,8 @@ export const PortfolioCoverflowSection: React.FC = () => {
             className="w-full h-full object-cover"
             src={nextItem.coverImage}
             alt={nextItem.title}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>

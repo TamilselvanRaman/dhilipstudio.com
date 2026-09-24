@@ -59,7 +59,7 @@ export const InfiniteMarqueeSection: React.FC = () => {
                 className="w-72 h-96 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
               >
                 <div className="w-full h-72 rounded bg-surface-container overflow-hidden">
-                  <img className="w-full h-full object-cover" src={item.src} alt={item.alt} />
+                  <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                 </div>
                 <div className="pt-3">
                   <span className="font-label-md text-label-md tracking-wider uppercase text-outline">
@@ -81,7 +81,7 @@ export const InfiniteMarqueeSection: React.FC = () => {
                 className="w-72 h-96 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
               >
                 <div className="w-full h-72 rounded bg-surface-container overflow-hidden">
-                  <img className="w-full h-full object-cover" src={item.src} alt={item.alt} />
+                  <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                 </div>
                 <div className="pt-3">
                   <span className="font-label-md text-label-md tracking-wider uppercase text-outline">
@@ -105,7 +105,7 @@ export const InfiniteMarqueeSection: React.FC = () => {
                   key={idx}
                   className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
                 >
-                  <img className="w-full h-full object-cover rounded" src={item.src} alt={item.alt} />
+                  <img className="w-full h-full object-cover rounded" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                   <div className="absolute inset-3 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-4 rounded">
                     <p className="font-display-md text-lg italic text-on-secondary font-serif leading-snug">
                       {item.quote}
@@ -118,7 +118,7 @@ export const InfiniteMarqueeSection: React.FC = () => {
                   className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="w-full h-44 rounded bg-surface-container overflow-hidden">
-                    <img className="w-full h-full object-cover" src={item.src} alt={item.alt} />
+                    <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                   </div>
                   <div className="pt-2">
                     <span className="font-label-md text-label-md text-secondary uppercase font-medium">
@@ -141,7 +141,7 @@ export const InfiniteMarqueeSection: React.FC = () => {
                   key={`dup2-${idx}`}
                   className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
                 >
-                  <img className="w-full h-full object-cover rounded" src={item.src} alt={item.alt} />
+                  <img className="w-full h-full object-cover rounded" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                   <div className="absolute inset-3 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-4 rounded">
                     <p className="font-display-md text-lg italic text-on-secondary font-serif leading-snug">
                       {item.quote}
@@ -154,7 +154,7 @@ export const InfiniteMarqueeSection: React.FC = () => {
                   className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="w-full h-44 rounded bg-surface-container overflow-hidden">
-                    <img className="w-full h-full object-cover" src={item.src} alt={item.alt} />
+                    <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                   </div>
                   <div className="pt-2">
                     <span className="font-label-md text-label-md text-secondary uppercase font-medium">

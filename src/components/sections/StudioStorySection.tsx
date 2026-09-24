@@ -66,8 +66,10 @@ export const StudioStorySection: React.FC = () => {
             >
               <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white">
                 <img
-                  src="/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp"
+                  src="/home_Page_images/wedding-photography-in-chennai-dhilip-studio-mobile.webp"
                   alt="Chennai wedding photography"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[420px] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
