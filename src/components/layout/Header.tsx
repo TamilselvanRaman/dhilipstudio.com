@@ -60,6 +60,8 @@ export const Header: React.FC = () => {
             <img
               src="/logo.png"
               alt="Dhilip Studio Wedding Photography"
+              width={223}
+              height={48}
               className="h-10 md:h-12 w-auto object-contain drop-shadow-xs"
             />
           </Link>

@@ -46,16 +46,16 @@ export const HeroSection: React.FC = () => {
           }`}
         >
           <div
-            className={`h-[1px] bg-secondary/40 transition-all duration-1000 delay-600 ${
-              isRevealed ? "w-12 sm:w-24" : "w-0"
+            className={`h-[1px] w-12 sm:w-24 bg-secondary/40 transition-transform duration-1000 delay-600 origin-right ${
+              isRevealed ? "scale-x-100" : "scale-x-0"
             }`}
           ></div>
           <p className="font-['Great_Vibes',cursive] text-xl sm:text-2xl text-secondary tracking-wide">
             candid · traditional · cinematic
           </p>
           <div
-            className={`h-[1px] bg-secondary/40 transition-all duration-1000 delay-600 ${
-              isRevealed ? "w-12 sm:w-24" : "w-0"
+            className={`h-[1px] w-12 sm:w-24 bg-secondary/40 transition-transform duration-1000 delay-600 origin-left ${
+              isRevealed ? "scale-x-100" : "scale-x-0"
             }`}
           ></div>
         </div>

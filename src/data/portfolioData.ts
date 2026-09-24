@@ -42,17 +42,17 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
         alt: "Candid wedding moment",
       },
       {
-        src: "/home_Page_images/brahmin-wedding-photography.jpg",
+        src: "/home_Page_images/brahmin-wedding-photography.webp",
         caption: "Traditional priest homam ritual and rice flower shower blessing.",
         alt: "Brahmin ritual flower shower",
       },
       {
-        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
         caption: "Romantic post-wedding evening monograph at Mahabalipuram shore temple.",
         alt: "Post-wedding romantic couple shoot",
       },
       {
-        src: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+        src: "/home_Page_images/engagement-photo-studio-chennai.webp",
         caption: "Intimate portrait highlighting temple gold jewelry and silk saree weaves.",
         alt: "Engagement studio portrait",
       },
@@ -83,12 +83,12 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
         alt: "Oonjal ritual couple portrait",
       },
       {
-        src: "/home_Page_images/brahmin-wedding-photography.jpg",
+        src: "/home_Page_images/brahmin-wedding-photography.webp",
         caption: "Iyer family flower shower ritual during auspicious Muhurtham hours.",
         alt: "Brahmin wedding ceremony",
       },
       {
-        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
         caption: "Sunset outdoor portrait in Mahabalipuram heritage courtyard.",
         alt: "Pre wedding outdoor portrait",
       },
@@ -106,10 +106,10 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     client: "Ramanathan & Meenakshi",
     location: "Mylapore Hall, Chennai",
     date: "DECEMBER 2025",
-    coverImage: "/home_Page_images/brahmin-wedding-photography.jpg",
+    coverImage: "/home_Page_images/brahmin-wedding-photography.webp",
     images: [
       {
-        src: "/home_Page_images/brahmin-wedding-photography.jpg",
+        src: "/home_Page_images/brahmin-wedding-photography.webp",
         caption: "Traditional Iyer priest homam ritual and rice flower shower.",
         alt: "Brahmin wedding ceremony",
       },
@@ -119,7 +119,7 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
         alt: "Mandap vows",
       },
       {
-        src: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+        src: "/home_Page_images/engagement-photo-studio-chennai.webp",
         caption: "Grand family gathering portrait under decorated mandap.",
         alt: "Traditional family photo",
       },
@@ -142,15 +142,15 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     client: "Ramkumar & Kalai",
     location: "Mahabalipuram Beach & Shore Temple",
     date: "JANUARY 2026",
-    coverImage: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+    coverImage: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
     images: [
       {
-        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
         caption: "Sunset couple monograph framed against ancient coastal stone architecture.",
         alt: "Mahabalipuram beach shoot",
       },
       {
-        src: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+        src: "/home_Page_images/engagement-photo-studio-chennai.webp",
         caption: "Golden hour dramatic gown flow with ocean breeze.",
         alt: "Couple pre wedding shoot",
       },
@@ -178,10 +178,10 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     client: "Sugarmar & Partner",
     location: "Anna Nagar Studio, Chennai",
     date: "FEBRUARY 2026",
-    coverImage: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+    coverImage: "/home_Page_images/engagement-photo-studio-chennai.webp",
     images: [
       {
-        src: "/home_Page_images/engagement-photo-studio-chennai.jpg",
+        src: "/home_Page_images/engagement-photo-studio-chennai.webp",
         caption: "Romantic ring exchange portrait with custom studio backdrop.",
         alt: "Engagement studio photo",
       },
@@ -191,12 +191,12 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
         alt: "Bridal gold jewelry close-up",
       },
       {
-        src: "/home_Page_images/brahmin-wedding-photography.jpg",
+        src: "/home_Page_images/brahmin-wedding-photography.webp",
         caption: "Vibrant family togetherness framing.",
         alt: "Family portrait",
       },
       {
-        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
         caption: "Evening reception stage lighting setup.",
         alt: "Stage lighting portrait",
       },
@@ -214,15 +214,15 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     client: "Priya & Karthik",
     location: "ECR Resort, Chennai",
     date: "FEBRUARY 2026",
-    coverImage: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+    coverImage: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp",
     images: [
       {
-        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp",
         caption: "Flowing royal blue gown portrait along secluded garden paths.",
         alt: "Maternity gown photoshoot",
       },
       {
-        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.webp",
         caption: "Tender husband and wife embrace celebrating upcoming parenthood.",
         alt: "Maternity couple embrace",
       },
@@ -245,15 +245,15 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     client: "Kavitha & Arul",
     location: "Porur Studio, Chennai",
     date: "MARCH 2026",
-    coverImage: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.jpg",
+    coverImage: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.webp",
     images: [
       {
-        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.webp",
         caption: "Gentle temperature-controlled sleeping baby prop portrait.",
         alt: "Newborn baby sleeping photo",
       },
       {
-        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp",
         caption: "Parents holding tiny newborn hands.",
         alt: "Newborn parent hands close-up",
       },
@@ -284,12 +284,12 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
         alt: "Kids birthday celebration setup",
       },
       {
-        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.webp",
         caption: "Candid laugh with parents and grandparents.",
         alt: "Family celebration smile",
       },
       {
-        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg",
+        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp",
         caption: "Cake smash excitement and family laughter.",
         alt: "Cake smash photo",
       },

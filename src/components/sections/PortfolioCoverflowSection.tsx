@@ -195,9 +195,9 @@ export const PortfolioCoverflowSection: React.FC = () => {
                       500+ CELEBRATIONS &amp; MONOGRAPHS
                     </span>
                   </div>
-                  <h4 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-wide leading-tight drop-shadow-md">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-white tracking-wide leading-tight drop-shadow-md">
                     Explore Full Studio Gallery
-                  </h4>
+                  </h3>
                   <p className="text-xs text-slate-100 font-sans font-medium leading-relaxed max-w-xs mx-auto drop-shadow-sm line-clamp-2">
                     View all candid wedding monographs, sacred Brahmin rituals, pre-wedding beach films, maternity &amp; milestone celebrations.
                   </p>
@@ -237,9 +237,9 @@ export const PortfolioCoverflowSection: React.FC = () => {
                   <span className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#f3e3a1]">
                     FEATURED MONOGRAPH · {currentItem.category}
                   </span>
-                  <h4 className="font-serif text-xl sm:text-2xl font-bold tracking-wide leading-tight">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold tracking-wide leading-tight">
                     {currentItem.title}
-                  </h4>
+                  </h3>
                 </div>
 
                 {/* Left & Right Mobile Swap Action Overlay Buttons */}
@@ -250,7 +250,7 @@ export const PortfolioCoverflowSection: React.FC = () => {
                     prevSlide();
                   }}
                   aria-label="Previous monograph"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-xl sm:text-2xl">chevron_left</span>
                 </button>
@@ -262,7 +262,7 @@ export const PortfolioCoverflowSection: React.FC = () => {
                     nextSlide();
                   }}
                   aria-label="Next monograph"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-xl sm:text-2xl">chevron_right</span>
                 </button>
@@ -310,19 +310,23 @@ export const PortfolioCoverflowSection: React.FC = () => {
       </div>
 
       {/* Dot Indicators for Mobile & Desktop Swapping */}
-      <nav aria-label="Portfolio pagination" className="flex items-center justify-center space-x-2 mt-6 mb-2">
+      <nav aria-label="Portfolio pagination" className="flex items-center justify-center space-x-1 mt-6 mb-2">
         {portfolioDetailsList.map((_, dotIdx) => (
           <button
             key={dotIdx}
             type="button"
             onClick={() => setCurrentIndex(dotIdx)}
             aria-label={`Go to monograph slide ${dotIdx + 1}`}
-            className={`h-2 rounded-full transition-all duration-300 focus:outline-none cursor-pointer ${
-              dotIdx === currentIndex
-                ? "w-6 bg-[#f3e3a1] shadow-md"
-                : "w-2 bg-white/40 hover:bg-white/70"
-            }`}
-          />
+            className="min-w-[44px] min-h-[44px] p-2 flex items-center justify-center focus:outline-none cursor-pointer"
+          >
+            <span
+              className={`h-2 rounded-full transition-all duration-300 ${
+                dotIdx === currentIndex
+                  ? "w-6 bg-[#f3e3a1] shadow-md"
+                  : "w-2 bg-white/40 hover:bg-white/70"
+              }`}
+            />
+          </button>
         ))}
       </nav>
 

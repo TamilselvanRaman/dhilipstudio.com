@@ -168,7 +168,7 @@ export const Hero3DCarousel: React.FC = () => {
       filter: config.filter,
       boxShadow: config.shadow,
       border: config.border,
-      transition: "transform 0.85s cubic-bezier(0.34, 1.25, 0.64, 1), opacity 0.75s ease-out, filter 0.75s ease-out, box-shadow 0.75s ease-out",
+      transition: "transform 0.85s cubic-bezier(0.34, 1.25, 0.64, 1), opacity 0.75s ease-out, filter 0.75s ease-out",
     };
   };
 
@@ -224,6 +224,11 @@ export const Hero3DCarousel: React.FC = () => {
                   <img
                     src={card.src}
                     alt={card.alt}
+                    width={870}
+                    height={1280}
+                    loading={isCenter ? "eager" : "lazy"}
+                    decoding={isCenter ? "sync" : "async"}
+                    {...(isCenter ? ({ fetchPriority: "high" } as any) : {})}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
@@ -254,19 +259,23 @@ export const Hero3DCarousel: React.FC = () => {
       </div>
 
       {/* Dot Indicators */}
-      <nav aria-label="Carousel pagination" className="flex items-center justify-center space-x-2 mt-2 mb-4">
+      <nav aria-label="Carousel pagination" className="flex items-center justify-center space-x-1 mt-2 mb-4">
         {heroCards.map((_, dotIdx) => (
           <button
             key={dotIdx}
             type="button"
             onClick={() => setCurrentIndex(dotIdx)}
             aria-label={`Go to slide ${dotIdx + 1}`}
-            className={`h-1.5 rounded-full transition-all duration-300 focus:outline-none ${
-              dotIdx === currentIndex
-                ? "w-5 bg-primary shadow-xs"
-                : "w-1.5 bg-outline-variant/60 hover:bg-outline"
-            }`}
-          />
+            className="min-w-[44px] min-h-[44px] p-2 flex items-center justify-center focus:outline-none cursor-pointer"
+          >
+            <span
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                dotIdx === currentIndex
+                  ? "w-5 bg-primary shadow-xs"
+                  : "w-1.5 bg-outline-variant/60 hover:bg-outline"
+              }`}
+            />
+          </button>
         ))}
       </nav>
     </div>

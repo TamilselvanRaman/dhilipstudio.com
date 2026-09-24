@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 interface FooterProps {
@@ -9,6 +9,26 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ topBgColor = "bg-[#f6f3ed]" }) => {
   const [copied, setCopied] = useState(false);
+  const [showMap, setShowMap] = useState(false);
+  const mapContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setShowMap(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+
+    if (mapContainerRef.current) {
+      observer.observe(mapContainerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleShare = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -54,6 +74,8 @@ export const Footer: React.FC<FooterProps> = ({ topBgColor = "bg-[#f6f3ed]" }) =
                   <img
                     src="/logo.png"
                     alt="Dhilip Studio Wedding Photography"
+                    width={223}
+                    height={48}
                     className="h-9 sm:h-10 w-auto object-contain"
                   />
                 </div>
@@ -177,16 +199,22 @@ export const Footer: React.FC<FooterProps> = ({ topBgColor = "bg-[#f6f3ed]" }) =
                 STUDIO LOCATION
               </h3>
               {/* Google Map Embed Frame */}
-              <div className="relative w-full h-24 sm:h-28 rounded-lg overflow-hidden border border-slate-700/80 shadow-md group">
-                <iframe
-                  title="Dhilip Studio Location Map"
-                  src="https://maps.google.com/maps?q=13.0377,80.1514&z=16&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={false}
-                  loading="lazy"
-                />
+              <div ref={mapContainerRef} className="relative w-full h-24 sm:h-28 rounded-lg overflow-hidden border border-slate-700/80 shadow-md group bg-slate-900">
+                {showMap ? (
+                  <iframe
+                    title="Dhilip Studio Location Map"
+                    src="https://maps.google.com/maps?q=13.0377,80.1514&z=16&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-slate-500 text-xs font-mono">
+                    <span>Loading Studio Map...</span>
+                  </div>
+                )}
                 <a
                   href="https://maps.google.com/?q=13.0377,80.1514"
                   target="_blank"

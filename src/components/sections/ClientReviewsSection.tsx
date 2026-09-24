@@ -102,16 +102,20 @@ export const ClientReviewsSection: React.FC = () => {
 
           <div className="flex items-center justify-between pt-space-lg mt-space-md border-t border-outline-variant/30">
             {/* Dot Indicators with Auto Loop indicator */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               {reviewsList.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentReviewIdx(idx)}
                   aria-label={`Review ${idx + 1}`}
-                  className={`h-3 rounded-full transition-all duration-300 cursor-pointer ${
-                    idx === currentReviewIdx ? "bg-[#b88c42] w-6" : "bg-stone-300 w-3 hover:bg-stone-400"
-                  }`}
-                />
+                  className="min-w-[44px] min-h-[44px] p-2 flex items-center justify-center cursor-pointer focus:outline-none"
+                >
+                  <span
+                    className={`h-3 rounded-full transition-all duration-300 ${
+                      idx === currentReviewIdx ? "bg-[#b88c42] w-6" : "bg-stone-300 w-3 hover:bg-stone-400"
+                    }`}
+                  />
+                </button>
               ))}
             </div>
 

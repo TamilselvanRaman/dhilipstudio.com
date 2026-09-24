@@ -1,0 +1,34 @@
+{
+  "$schema": "https://agenticresourcediscovery.org/spec/v1/schema.json",
+  "name": "Dhilip Studio AI Resource Manifest",
+  "version": "1.0.0",
+  "description": "Resource catalog and service specifications for Dhilip Studio Wedding Photography in Chennai",
+  "provider": {
+    "name": "Dhilip Studio",
+    "url": "https://dhilipstudio.com/",
+    "contact": "dhilipstudio@gmail.com"
+  },
+  "resources": [
+    {
+      "id": "wedding-photography-services",
+      "name": "Wedding Photography & Cinematography Services",
+      "type": "service",
+      "url": "https://dhilipstudio.com/services",
+      "description": "Comprehensive photography and cinematography services for South Indian weddings, candid portraits, Brahmin rituals, and maternity shoots."
+    },
+    {
+      "id": "monograph-portfolio",
+      "name": "Portfolio Gallery Monograph Catalog",
+      "type": "catalog",
+      "url": "https://dhilipstudio.com/gallery",
+      "description": "Collection of wedding monographs, client stories, and high-resolution photo galleries."
+    },
+    {
+      "id": "session-booking",
+      "name": "Book a Photography Session",
+      "type": "action",
+      "url": "https://dhilipstudio.com/contact",
+      "description": "Direct session booking and inquiry request form."
+    }
+  ]
+}
