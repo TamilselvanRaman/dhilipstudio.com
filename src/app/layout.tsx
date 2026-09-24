@@ -53,6 +53,15 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} ${cormorant.variable} ${greatVibes.variable} ${dancingScript.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preload" as="image" href="/logo.webp" type="image/webp" fetchPriority="high" />
+        <link
+          rel="preload"
+          as="image"
+          href="/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp"
+          type="image/webp"
+          fetchPriority="high"
+        />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"

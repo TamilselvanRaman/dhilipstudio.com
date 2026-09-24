@@ -72,7 +72,7 @@ export const Footer: React.FC<FooterProps> = ({ topBgColor = "bg-[#f6f3ed]" }) =
               <div>
                 <div className="flex items-center gap-3 mb-2.5">
                   <img
-                    src="/logo.png"
+                    src="/logo.webp"
                     alt="Dhilip Studio Wedding Photography"
                     width={223}
                     height={48}
@@ -211,7 +211,7 @@ export const Footer: React.FC<FooterProps> = ({ topBgColor = "bg-[#f6f3ed]" }) =
                     loading="lazy"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-500 text-xs font-mono">
+                  <div className="w-full h-full flex items-center justify-center text-slate-300 font-semibold text-xs font-mono">
                     <span>Loading Studio Map...</span>
                   </div>
                 )}

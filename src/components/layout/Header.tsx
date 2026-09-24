@@ -58,10 +58,11 @@ export const Header: React.FC = () => {
         <div className="flex items-center gap-3">
           <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-90">
             <img
-              src="/logo.png"
+              src="/logo.webp"
               alt="Dhilip Studio Wedding Photography"
               width={223}
               height={48}
+              {...({ fetchPriority: "high" } as any)}
               className="h-10 md:h-12 w-auto object-contain drop-shadow-xs"
             />
           </Link>
