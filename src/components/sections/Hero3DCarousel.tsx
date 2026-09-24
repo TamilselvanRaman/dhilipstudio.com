@@ -219,6 +219,8 @@ export const Hero3DCarousel: React.FC = () => {
                 >
                   <img
                     src={card.src}
+                    srcSet={`${card.src.replace('.webp', '-mobile.webp')} 400w, ${card.src} 800w`}
+                    sizes="(max-width: 640px) 380px, 800px"
                     alt={card.alt}
                     width={870}
                     height={1280}

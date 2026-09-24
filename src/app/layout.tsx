@@ -54,12 +54,20 @@ export default function RootLayout({
     >
       <head>
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preload" as="image" href="/logo.webp" type="image/webp" fetchPriority="high" />
+        <link
+          rel="preload"
+          as="image"
+          href="/home_Page_images/wedding-photography-in-chennai-dhilip-studio-mobile.webp"
+          type="image/webp"
+          media="(max-width: 640px)"
+          fetchPriority="high"
+        />
         <link
           rel="preload"
           as="image"
           href="/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp"
           type="image/webp"
+          media="(min-width: 641px)"
           fetchPriority="high"
         />
         <link
