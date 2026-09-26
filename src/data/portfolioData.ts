@@ -33,28 +33,18 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     images: [
       {
         src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
-        caption: "Bride and Groom standing under decorated temple mandap during flower shower ritual.",
-        alt: "South Indian wedding couple under decorated mandap",
+        caption: "Bride Jane and Groom Vishal under decorated temple mandap during flower shower ritual.",
+        alt: "Jane & Vishal South Indian wedding couple under decorated mandap",
       },
       {
         src: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
-        caption: "Unscripted candid smile captured during Mangalyadharanam sacred vows.",
-        alt: "Candid wedding moment",
+        caption: "Unscripted candid smile of Jane captured during Mangalyadharanam sacred vows.",
+        alt: "Jane & Vishal candid wedding moment",
       },
       {
-        src: "/home_Page_images/brahmin-wedding-photography.webp",
-        caption: "Traditional priest homam ritual and rice flower shower blessing.",
-        alt: "Brahmin ritual flower shower",
-      },
-      {
-        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
-        caption: "Romantic post-wedding evening monograph at Mahabalipuram shore temple.",
-        alt: "Post-wedding romantic couple shoot",
-      },
-      {
-        src: "/home_Page_images/engagement-photo-studio-chennai.webp",
-        caption: "Intimate portrait highlighting temple gold jewelry and silk saree weaves.",
-        alt: "Engagement studio portrait",
+        src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio-mobile-opt.webp",
+        caption: "Jane & Vishal grand evening reception mandap entrance.",
+        alt: "Jane & Vishal reception portrait",
       },
     ],
     description: "An extraordinary celebration of love set amidst traditional temple pillars and fragrant jasmine garlands. Dhilip Studio captured every sacred ritual from Kasi Yatra to the grand evening reception with dual 4K cinema cameras.",
@@ -74,23 +64,13 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     images: [
       {
         src: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
-        caption: "Mid-laugh candid interaction during garland exchange.",
-        alt: "Candid wedding laughter",
+        caption: "Mid-laugh candid interaction of Bharathi & Radhan during garland exchange.",
+        alt: "Bharathi & Radhan candid wedding laughter",
       },
       {
         src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
         caption: "Sacred Oonjal swing ceremony with traditional South Indian songs.",
         alt: "Oonjal ritual couple portrait",
-      },
-      {
-        src: "/home_Page_images/brahmin-wedding-photography.webp",
-        caption: "Iyer family flower shower ritual during auspicious Muhurtham hours.",
-        alt: "Brahmin wedding ceremony",
-      },
-      {
-        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
-        caption: "Sunset outdoor portrait in Mahabalipuram heritage courtyard.",
-        alt: "Pre wedding outdoor portrait",
       },
     ],
     description: "Unscripted candid wedding documentation. Dhilip Studio operates with unobtrusive reverence so real emotions, mid-laugh glances, and tears of joy are preserved in authentic warmth.",
@@ -110,23 +90,13 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     images: [
       {
         src: "/home_Page_images/brahmin-wedding-photography.webp",
-        caption: "Traditional Iyer priest homam ritual and rice flower shower.",
-        alt: "Brahmin wedding ceremony",
+        caption: "Traditional Iyer priest homam ritual and rice flower shower for Ramanathan & Meenakshi.",
+        alt: "Brahmin wedding ceremony flower shower",
       },
       {
-        src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
-        caption: "Kanyadaanam & Mangalyadharanam auspicious minute.",
-        alt: "Mandap vows",
-      },
-      {
-        src: "/home_Page_images/engagement-photo-studio-chennai.webp",
-        caption: "Grand family gathering portrait under decorated mandap.",
-        alt: "Traditional family photo",
-      },
-      {
-        src: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
-        caption: "Unobtrusive priest ritual framing.",
-        alt: "Priest ritual framing",
+        src: "/home_Page_images/brahmin-wedding-photography-mobile.webp",
+        caption: "Kanyadaanam & Mangalyadharanam auspicious minute framing.",
+        alt: "Brahmin wedding sacred vows",
       },
     ],
     description: "Specialized documentation of authentic Iyer & Iyengar rituals. Capturing Kasi Yatra, Oonjal, and Kanyadaanam without disturbing sacred chants.",
@@ -146,23 +116,13 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     images: [
       {
         src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
-        caption: "Sunset couple monograph framed against ancient coastal stone architecture.",
-        alt: "Mahabalipuram beach shoot",
+        caption: "Sunset couple monograph of Ramkumar & Kalai framed against ancient coastal stone architecture.",
+        alt: "Ramkumar & Kalai Mahabalipuram beach shoot",
       },
       {
-        src: "/home_Page_images/engagement-photo-studio-chennai.webp",
+        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio-mobile.webp",
         caption: "Golden hour dramatic gown flow with ocean breeze.",
-        alt: "Couple pre wedding shoot",
-      },
-      {
-        src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
-        caption: "Cinematic drone aerial wide angle of couple on sea shore.",
-        alt: "Aerial couple photo",
-      },
-      {
-        src: "/home_Page_images/wedding-ceremony-candid-photography-chennai-dhilip-studio.webp",
-        caption: "Playful candid moments along the sea shore.",
-        alt: "Candid beach moments",
+        alt: "Mahabalipuram pre wedding outdoor portrait",
       },
     ],
     description: "A romantic cinematic monograph captured along the golden shores of Mahabalipuram. Featuring 4K slow-motion aerial drone footage and signature hand-retouched color grading.",
@@ -186,19 +146,9 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
         alt: "Engagement studio photo",
       },
       {
-        src: "/home_Page_images/wedding-photography-in-chennai-dhilip-studio.webp",
+        src: "/home_Page_images/engagement-photo-studio-chennai-mobile.webp",
         caption: "Bridal close-up highlighting gold temple jewelry.",
         alt: "Bridal gold jewelry close-up",
-      },
-      {
-        src: "/home_Page_images/brahmin-wedding-photography.webp",
-        caption: "Vibrant family togetherness framing.",
-        alt: "Family portrait",
-      },
-      {
-        src: "/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp",
-        caption: "Evening reception stage lighting setup.",
-        alt: "Stage lighting portrait",
       },
     ],
     description: "Vibrant ring exchange celebrations captured in our temperature-controlled studio. Warm ambient lighting combined with high-contrast portrait framing.",
@@ -218,18 +168,13 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     images: [
       {
         src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp",
-        caption: "Flowing royal blue gown portrait along secluded garden paths.",
-        alt: "Maternity gown photoshoot",
+        caption: "Flowing royal blue gown portrait of Priya along secluded garden paths.",
+        alt: "Priya maternity gown photoshoot",
       },
       {
-        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.webp",
-        caption: "Tender husband and wife embrace celebrating upcoming parenthood.",
-        alt: "Maternity couple embrace",
-      },
-      {
-        src: "/home_Page_images/kids-birthday-photographer-chennai.webp",
-        caption: "Artistic bump close-up with floral decor.",
-        alt: "Maternity bump close-up",
+        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio-mobile.webp",
+        caption: "Tender husband Karthik and wife Priya embrace celebrating upcoming parenthood.",
+        alt: "Priya & Karthik maternity couple embrace",
       },
     ],
     description: "A tender, serene maternity monograph celebrating the magical path to parenthood. Gentle natural lighting and artistic gown styling.",
@@ -253,14 +198,9 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
         alt: "Newborn baby sleeping photo",
       },
       {
-        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp",
-        caption: "Parents holding tiny newborn hands.",
+        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio-mobile.webp",
+        caption: "Parents Kavitha & Arul holding tiny newborn hands.",
         alt: "Newborn parent hands close-up",
-      },
-      {
-        src: "/home_Page_images/kids-birthday-photographer-chennai.webp",
-        caption: "Custom soft wrap studio setup.",
-        alt: "Studio newborn setup",
       },
     ],
     description: "Gentle, safe, temperature-controlled studio sessions capturing the pure innocence of your newborn's first days.",
@@ -280,18 +220,13 @@ export const portfolioDetailsList: PortfolioDetailItem[] = [
     images: [
       {
         src: "/home_Page_images/kids-birthday-photographer-chennai.webp",
-        caption: "Milestone marquee lighting setup with cake smash joy.",
-        alt: "Kids birthday celebration setup",
+        caption: "Milestone marquee lighting setup with cake smash joy for baby Amrutha.",
+        alt: "Amrutha 1st birthday celebration setup",
       },
       {
-        src: "/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.webp",
-        caption: "Candid laugh with parents and grandparents.",
-        alt: "Family celebration smile",
-      },
-      {
-        src: "/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp",
-        caption: "Cake smash excitement and family laughter.",
-        alt: "Cake smash photo",
+        src: "/home_Page_images/kids-birthday-photographer-chennai-mobile.webp",
+        caption: "Candid laugh of baby Amrutha with parents and grandparents.",
+        alt: "Amrutha family celebration smile",
       },
     ],
     description: "A vibrant 1st birthday milestone celebration filled with marquee lights, cake smash smiles, and multi-generational family warmth.",

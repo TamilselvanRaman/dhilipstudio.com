@@ -8,23 +8,31 @@ export const InfiniteMarqueeSection: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 350);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+            clearTimeout(fallbackTimer);
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.01, rootMargin: "100px 0px 100px 0px" }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
@@ -51,21 +59,21 @@ export const InfiniteMarqueeSection: React.FC = () => {
         <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-16 md:w-48 bg-gradient-to-l from-surface-container-low to-transparent z-10 pointer-events-none"></div>
 
         {/* Row 1: Right to Left */}
-        <div className="flex gap-space-md mb-space-md w-max animate-marquee hover:[animation-play-state:paused]">
-          <div className="flex gap-space-md">
+        <div className="flex gap-3 sm:gap-4 mb-3 sm:mb-4 w-max animate-marquee hover:[animation-play-state:paused]">
+          <div className="flex gap-3 sm:gap-4">
             {marqueeRow1.map((item, idx) => (
               <div
                 key={idx}
-                className="w-72 h-96 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
+                className="w-56 sm:w-72 h-80 sm:h-96 bg-surface-container-lowest rounded-lg p-2.5 sm:p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
               >
-                <div className="w-full h-72 rounded bg-surface-container overflow-hidden">
+                <div className="w-full h-60 sm:h-72 rounded bg-surface-container overflow-hidden">
                   <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                 </div>
-                <div className="pt-3">
-                  <span className="font-label-md text-label-md tracking-wider uppercase text-outline">
+                <div className="pt-2 sm:pt-3">
+                  <span className="text-[10px] sm:text-xs font-mono tracking-wider uppercase text-stone-500 font-medium block">
                     {item.tag}
                   </span>
-                  <p className="font-headline-sm text-base font-serif text-on-surface truncate">
+                  <p className="text-xs sm:text-base font-serif text-stone-900 font-bold truncate">
                     {item.title}
                   </p>
                 </div>
@@ -74,20 +82,20 @@ export const InfiniteMarqueeSection: React.FC = () => {
           </div>
 
           {/* Duplicated Track for Seamless Infinite Scroll */}
-          <div aria-hidden="true" className="flex gap-space-md">
+          <div aria-hidden="true" className="flex gap-3 sm:gap-4">
             {marqueeRow1.map((item, idx) => (
               <div
                 key={`dup-${idx}`}
-                className="w-72 h-96 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
+                className="w-56 sm:w-72 h-80 sm:h-96 bg-surface-container-lowest rounded-lg p-2.5 sm:p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col"
               >
-                <div className="w-full h-72 rounded bg-surface-container overflow-hidden">
+                <div className="w-full h-60 sm:h-72 rounded bg-surface-container overflow-hidden">
                   <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                 </div>
-                <div className="pt-3">
-                  <span className="font-label-md text-label-md tracking-wider uppercase text-outline">
+                <div className="pt-2 sm:pt-3">
+                  <span className="text-[10px] sm:text-xs font-mono tracking-wider uppercase text-stone-500 font-medium block">
                     {item.tag}
                   </span>
-                  <p className="font-headline-sm text-base font-serif text-on-surface truncate">
+                  <p className="text-xs sm:text-base font-serif text-stone-900 font-bold truncate">
                     {item.title}
                   </p>
                 </div>
@@ -97,17 +105,17 @@ export const InfiniteMarqueeSection: React.FC = () => {
         </div>
 
         {/* Row 2: Left to Right */}
-        <div className="flex gap-space-md w-max animate-marquee-reverse hover:[animation-play-state:paused]">
-          <div className="flex gap-space-md">
+        <div className="flex gap-3 sm:gap-4 w-max animate-marquee-reverse hover:[animation-play-state:paused]">
+          <div className="flex gap-3 sm:gap-4">
             {marqueeRow2.map((item, idx) =>
               item.isOverlay ? (
                 <div
                   key={idx}
-                  className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
+                  className="w-64 sm:w-80 h-60 sm:h-72 bg-surface-container-lowest rounded-lg p-2.5 sm:p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
                 >
                   <img className="w-full h-full object-cover rounded" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
-                  <div className="absolute inset-3 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-4 rounded">
-                    <p className="font-display-md text-lg italic text-on-secondary font-serif leading-snug">
+                  <div className="absolute inset-2.5 sm:inset-3 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end p-3 sm:p-4 rounded">
+                    <p className="text-sm sm:text-lg italic text-white font-serif leading-snug">
                       {item.quote}
                     </p>
                   </div>
@@ -115,16 +123,16 @@ export const InfiniteMarqueeSection: React.FC = () => {
               ) : (
                 <div
                   key={idx}
-                  className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between"
+                  className="w-64 sm:w-80 h-60 sm:h-72 bg-surface-container-lowest rounded-lg p-2.5 sm:p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between"
                 >
-                  <div className="w-full h-44 rounded bg-surface-container overflow-hidden">
+                  <div className="w-full h-36 sm:h-44 rounded bg-surface-container overflow-hidden">
                     <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                   </div>
                   <div className="pt-2">
-                    <span className="font-label-md text-label-md text-secondary uppercase font-medium">
+                    <span className="text-[10px] sm:text-xs text-stone-500 uppercase font-medium block">
                       {item.tag}
                     </span>
-                    <p className="font-body-md text-body-sm text-on-surface font-serif">
+                    <p className="text-xs sm:text-sm text-stone-900 font-serif font-bold truncate">
                       {item.title}
                     </p>
                   </div>
@@ -134,16 +142,16 @@ export const InfiniteMarqueeSection: React.FC = () => {
           </div>
 
           {/* Duplicated Track for Row 2 Seamless Scroll */}
-          <div aria-hidden="true" className="flex gap-space-md">
+          <div aria-hidden="true" className="flex gap-3 sm:gap-4">
             {marqueeRow2.map((item, idx) =>
               item.isOverlay ? (
                 <div
                   key={`dup2-${idx}`}
-                  className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
+                  className="w-64 sm:w-80 h-60 sm:h-72 bg-surface-container-lowest rounded-lg p-2.5 sm:p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 relative overflow-hidden group"
                 >
                   <img className="w-full h-full object-cover rounded" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
-                  <div className="absolute inset-3 bg-gradient-to-t from-on-surface/80 via-transparent to-transparent flex items-end p-4 rounded">
-                    <p className="font-display-md text-lg italic text-on-secondary font-serif leading-snug">
+                  <div className="absolute inset-2.5 sm:inset-3 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end p-3 sm:p-4 rounded">
+                    <p className="text-sm sm:text-lg italic text-white font-serif leading-snug">
                       {item.quote}
                     </p>
                   </div>
@@ -151,16 +159,16 @@ export const InfiniteMarqueeSection: React.FC = () => {
               ) : (
                 <div
                   key={`dup2-${idx}`}
-                  className="w-80 h-72 bg-surface-container-lowest rounded-lg p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between"
+                  className="w-64 sm:w-80 h-60 sm:h-72 bg-surface-container-lowest rounded-lg p-2.5 sm:p-3 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between"
                 >
-                  <div className="w-full h-44 rounded bg-surface-container overflow-hidden">
+                  <div className="w-full h-36 sm:h-44 rounded bg-surface-container overflow-hidden">
                     <img className="w-full h-full object-cover" src={item.src} alt={item.alt} loading="lazy" decoding="async" />
                   </div>
                   <div className="pt-2">
-                    <span className="font-label-md text-label-md text-secondary uppercase font-medium">
+                    <span className="text-[10px] sm:text-xs text-stone-500 uppercase font-medium block">
                       {item.tag}
                     </span>
-                    <p className="font-body-md text-body-sm text-on-surface font-serif">
+                    <p className="text-xs sm:text-sm text-stone-900 font-serif font-bold truncate">
                       {item.title}
                     </p>
                   </div>

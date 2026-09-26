@@ -18,6 +18,9 @@
     --danger: #E5484D;
     --info: #4C9AFF;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   html, body {
     margin: 0;
     padding: 0;
@@ -26,7 +29,10 @@
     font-family: 'Inter', sans-serif;
   }
   body {
-    overscroll-behavior: none;
+    position: relative;
+    overflow-x: clip;
+    width: 100%;
+    min-height: 100vh;
   }
 }
 

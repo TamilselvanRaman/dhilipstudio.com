@@ -101,44 +101,60 @@ export const ServicesSection: React.FC = () => {
 
   // Cards Scroll Reveal Observer
   useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      setIsCardsVisible(true);
+    }, 350);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsCardsVisible(true);
+            clearTimeout(fallbackTimer);
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.01, rootMargin: "100px 0px 100px 0px" }
     );
 
     if (gridRef.current) {
       observer.observe(gridRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, []);
 
   // Stats Scroll Reveal Observer
   useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      setIsStatsVisible(true);
+    }, 450);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsStatsVisible(true);
+            clearTimeout(fallbackTimer);
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.25 }
+      { threshold: 0.01, rootMargin: "100px 0px 100px 0px" }
     );
 
     if (statsRef.current) {
       observer.observe(statsRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, []);
 
   return (

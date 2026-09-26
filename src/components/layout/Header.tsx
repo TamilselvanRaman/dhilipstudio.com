@@ -52,8 +52,8 @@ export const Header: React.FC = () => {
   }, [pathname, hoveredHref, activeHref]);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 shadow-sm transition-all duration-300">
-      <div className="h-20 w-full px-4 sm:px-8 lg:px-12 flex items-center justify-between">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-stone-900/95 backdrop-blur-md border-b border-stone-200/80 dark:border-stone-800 shadow-sm transition-all duration-300 overflow-hidden max-w-full">
+      <div className="h-20 w-full max-w-full px-3 sm:px-8 lg:px-12 flex items-center justify-between overflow-hidden">
         {/* Brand Logo */}
         <div className="flex items-center gap-3">
           <Link href="/" className="inline-flex items-center transition-opacity hover:opacity-90">

@@ -54,7 +54,7 @@ export default function AdminBlogCMS() {
       setSavedMessage(`Article "${title}" updated live!`);
     } else {
       const created: BlogArticle = {
-        id: Date.now(),
+        id: String(Date.now()),
         slug: slug || title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
         title,
         cardTitle: title.toUpperCase(),

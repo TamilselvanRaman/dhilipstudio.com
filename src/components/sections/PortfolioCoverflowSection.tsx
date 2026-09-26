@@ -16,23 +16,31 @@ export const PortfolioCoverflowSection: React.FC = () => {
   const isDragging = useRef(false);
 
   useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 350);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
+            clearTimeout(fallbackTimer);
             observer.disconnect();
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.01, rootMargin: "100px 0px 100px 0px" }
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, []);
 
   const nextSlide = () => {
@@ -147,39 +155,35 @@ export const PortfolioCoverflowSection: React.FC = () => {
 
         {/* Center Browser Window Mockup */}
         <div
-          className="relative z-20 w-full max-w-xl sm:max-w-2xl lg:max-w-3xl bg-[#fcfbfa] text-stone-900 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.55)] overflow-hidden transition-all duration-500 mx-auto"
+          className="relative z-20 w-full max-w-full sm:max-w-2xl lg:max-w-3xl bg-[#fcfbfa] text-stone-900 rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.55)] overflow-hidden transition-all duration-500 mx-auto"
           onTouchStart={(e) => handleStart(e.touches[0].clientX)}
           onTouchMove={(e) => handleMove(e.touches[0].clientX)}
           onTouchEnd={handleEnd}
-          onMouseDown={(e) => handleStart(e.clientX)}
-          onMouseMove={(e) => handleMove(e.clientX)}
-          onMouseUp={handleEnd}
-          onMouseLeave={handleEnd}
         >
           
           {/* Mac Header Bar */}
-          <div className="bg-[#f0ece5] px-4 py-2 flex items-center justify-between border-b border-stone-300">
-            <div className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56] inline-block"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e] inline-block"></span>
-              <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f] inline-block"></span>
+          <div className="bg-[#f0ece5] px-2.5 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between gap-1.5 sm:gap-2 border-b border-stone-300 min-w-0 overflow-hidden">
+            <div className="flex items-center gap-1.5 shrink-0">
+              <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#ff5f56] inline-block"></span>
+              <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#ffbd2e] inline-block"></span>
+              <span className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-[#27c93f] inline-block"></span>
             </div>
             <Link
               href={`/gallery/${currentItem.id}`}
-              className="bg-white px-3.5 py-1 rounded-full text-xs font-mono text-stone-700 tracking-tight border border-stone-300 hover:text-[#b88c42] transition-colors flex items-center gap-1 shadow-inner shrink-0"
+              className="flex-1 min-w-0 max-w-[70%] sm:max-w-none bg-white px-2.5 sm:px-3.5 py-1 rounded-full text-[10px] sm:text-xs font-mono text-stone-700 tracking-tight border border-stone-300 hover:text-[#b88c42] transition-colors flex items-center justify-between gap-1 shadow-inner overflow-hidden mx-1"
               title="Click to view full monograph details"
             >
-              <span className="whitespace-nowrap font-medium">dhilipstudio.com/wedding/{currentItem.slug}</span>
-              <span className="material-symbols-outlined text-[11px] text-stone-400">open_in_new</span>
+              <span className="truncate font-medium text-[10px] sm:text-xs min-w-0 block">dhilipstudio.com/wedding/{currentItem.slug}</span>
+              <span className="material-symbols-outlined text-[10px] sm:text-[11px] text-stone-400 shrink-0">open_in_new</span>
             </Link>
-            <span className="material-symbols-outlined text-stone-400 text-xs">lock</span>
+            <span className="material-symbols-outlined text-stone-400 text-xs shrink-0">lock</span>
           </div>
 
-          <div className="p-3.5 sm:p-6 bg-white">
+          <div className="p-3 sm:p-6 bg-white">
             {/* Clickable Image or View All Card */}
             {currentItem.isViewAllCard ? (
               <div
-                className="relative h-[340px] sm:h-[380px] md:h-[420px] w-full rounded-xl overflow-hidden mb-3 bg-[#18181b] flex flex-col items-center justify-center text-center p-5 sm:p-6 border border-[#d4af37]/40 shadow-inner group"
+                className="relative h-[340px] sm:h-[380px] md:h-[420px] w-full rounded-xl overflow-hidden mb-3 bg-[#18181b] flex flex-col items-center justify-center text-center p-4 sm:p-6 border border-[#d4af37]/40 shadow-inner group"
               >
                 <img
                   className="absolute inset-0 w-full h-full object-cover opacity-35 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
@@ -256,9 +260,9 @@ export const PortfolioCoverflowSection: React.FC = () => {
                     prevSlide();
                   }}
                   aria-label="Previous monograph"
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-30 w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-xl sm:text-2xl">chevron_left</span>
+                  <span className="material-symbols-outlined text-lg sm:text-2xl">chevron_left</span>
                 </button>
 
                 <button
@@ -268,33 +272,33 @@ export const PortfolioCoverflowSection: React.FC = () => {
                     nextSlide();
                   }}
                   aria-label="Next monograph"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-30 w-10 sm:w-11 h-10 sm:h-11 rounded-full bg-black/70 hover:bg-[#b88c42] backdrop-blur-md border border-white/30 text-white flex items-center justify-center shadow-xl active:scale-90 transition-all cursor-pointer"
                 >
-                  <span className="material-symbols-outlined text-xl sm:text-2xl">chevron_right</span>
+                  <span className="material-symbols-outlined text-lg sm:text-2xl">chevron_right</span>
                 </button>
               </div>
             )}
 
             {/* Bottom Details Bar */}
-            <div className="flex items-center justify-between pt-1 text-xs">
-              <div>
-                <span className="font-bold uppercase tracking-widest text-[#b88c42] text-[11px] block">
+            <div className="flex items-center justify-between pt-1 text-xs gap-2 min-w-0 overflow-hidden">
+              <div className="min-w-0 overflow-hidden">
+                <span className="font-bold uppercase tracking-widest text-[#b88c42] text-[10px] sm:text-[11px] block truncate">
                   {currentItem.edition}
                 </span>
-                <span className="text-stone-500 font-medium text-[11px]">{currentItem.location}</span>
+                <span className="text-stone-500 font-medium text-[10px] sm:text-[11px] block truncate">{currentItem.location}</span>
               </div>
               <Link
                 href={currentItem.isViewAllCard ? "/gallery" : `/gallery/${currentItem.id}`}
-                className="flex items-center gap-1 text-[#b88c42] font-bold uppercase tracking-wider hover:text-stone-900 transition-colors text-[11px]"
+                className="flex items-center gap-1 text-[#b88c42] font-bold uppercase tracking-wider hover:text-stone-900 transition-colors text-[10px] sm:text-[11px] shrink-0"
               >
-                <span>{currentItem.isViewAllCard ? "Open Gallery Page" : "View Details Page"}</span>
+                <span>{currentItem.isViewAllCard ? "Open Gallery" : "View Details"}</span>
                 <span className="material-symbols-outlined text-xs">north_east</span>
               </Link>
             </div>
           </div>
 
           {/* Cursive Amazing Overlay Badge */}
-          <div className="absolute bottom-3 right-5 pointer-events-none transform -rotate-6">
+          <div className="hidden sm:block absolute bottom-3 right-5 pointer-events-none transform -rotate-6">
             <span className="font-['Great_Vibes',cursive] text-3xl text-[#b88c42] select-none opacity-90 drop-shadow">
               Amazing
             </span>
@@ -318,24 +322,26 @@ export const PortfolioCoverflowSection: React.FC = () => {
       </div>
 
       {/* Dot Indicators for Mobile & Desktop Swapping */}
-      <nav aria-label="Portfolio pagination" className="flex items-center justify-center space-x-1 mt-6 mb-2">
-        {portfolioDetailsList.map((_, dotIdx) => (
-          <button
-            key={dotIdx}
-            type="button"
-            onClick={() => setCurrentIndex(dotIdx)}
-            aria-label={`Go to monograph slide ${dotIdx + 1}`}
-            className="min-w-[44px] min-h-[44px] p-2 flex items-center justify-center focus:outline-none cursor-pointer"
-          >
-            <span
-              className={`h-2 rounded-full transition-all duration-300 ${
-                dotIdx === currentIndex
-                  ? "w-6 bg-[#f3e3a1] shadow-md"
-                  : "w-2 bg-white/40 hover:bg-white/70"
-              }`}
-            />
-          </button>
-        ))}
+      <nav aria-label="Portfolio pagination" className="flex items-center justify-center mt-3 mb-2">
+        <div className="inline-flex items-center justify-center gap-1 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 shadow-xs">
+          {portfolioDetailsList.map((_, dotIdx) => (
+            <button
+              key={dotIdx}
+              type="button"
+              onClick={() => setCurrentIndex(dotIdx)}
+              aria-label={`Go to monograph slide ${dotIdx + 1}`}
+              className="p-0.5 flex items-center justify-center focus:outline-none cursor-pointer"
+            >
+              <span
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  dotIdx === currentIndex
+                    ? "w-3.5 bg-[#f3e3a1] shadow-xs"
+                    : "w-1 bg-white/40 hover:bg-white/80"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
       </nav>
 
       {/* Bottom Open Gallery View All Button */}

@@ -1,4 +1,6 @@
 // Administrative Data Store & Types for Studio Admin & SEO Dashboard
+import { legacyServicesList, ServiceDetailItem } from "@/data/servicesData";
+import { blogArticles, BlogArticle } from "@/data/blogData";
 
 export interface Booking {
   id: string;
@@ -385,12 +387,12 @@ export const initialSettings: StudioSettingsData = {
   autoSmsReminders: true,
 };
 
-export const initialMetaTags: MetaTagEntry[] = [
+export const coreMetaTags: MetaTagEntry[] = [
   {
     routePath: "/",
     pageName: "Homepage",
-    metaTitle: "Dhilip Studio — Editorial Wedding Photography Chennai",
-    metaDescription: "Premier candid wedding photographers in Chennai specializing in Brahmin Muhurtham rituals, pre-wedding films & milestone celebrations.",
+    metaTitle: "Best Wedding Photography in Chennai | Wedding Photographers Chennai",
+    metaDescription: "Wedding Photographer in Chennai capturing timeless moments with candid, traditional, and cinematic photography to make your special day unforgettable.",
     canonicalUrl: "https://dhilipstudio.com/",
     ogImageUrl: "/logo.png",
     focusKeyword: "Wedding Photographers in Chennai",
@@ -416,6 +418,54 @@ export const initialMetaTags: MetaTagEntry[] = [
     focusKeyword: "Luxury Wedding Photographers Porur",
     status: "Needs Review",
   },
+  {
+    routePath: "/videos",
+    pageName: "Cinematic Films",
+    metaTitle: "4K Wedding & Pre-Wedding Cinematic Films — Dhilip Studio",
+    metaDescription: "Watch cinematic wedding highlights, engagement films & aerial drone teasers in Chennai.",
+    canonicalUrl: "https://dhilipstudio.com/videos",
+    ogImageUrl: "/logo.png",
+    focusKeyword: "Wedding Cinema Film Chennai",
+    status: "Optimized",
+  },
+  {
+    routePath: "/contact",
+    pageName: "Contact & Booking",
+    metaTitle: "Book Best Wedding Photographers in Chennai — Dhilip Studio",
+    metaDescription: "Get free custom price quote for your wedding, engagement, or birthday photoshoot in Chennai.",
+    canonicalUrl: "https://dhilipstudio.com/contact",
+    ogImageUrl: "/logo.png",
+    focusKeyword: "Wedding Photographer Quotation Chennai",
+    status: "Optimized",
+  },
+];
+
+const serviceMetaEntries: MetaTagEntry[] = legacyServicesList.map((s) => ({
+  routePath: `/services/${s.slug}`,
+  pageName: `Service: ${s.title}`,
+  metaTitle: s.metaTitle || s.title,
+  metaDescription: s.metaDescription || (s.paragraphs[0] ? s.paragraphs[0].slice(0, 155) + "..." : ""),
+  canonicalUrl: s.canonicalUrl || `https://dhilipstudio.com/${s.slug}.php`,
+  ogImageUrl: s.coverImage || "/logo.png",
+  focusKeyword: `${s.category} Photography Chennai`,
+  status: s.metaDescription ? "Optimized" : "Needs Review",
+}));
+
+const blogMetaEntries: MetaTagEntry[] = blogArticles.map((b) => ({
+  routePath: `/blog/${b.slug}`,
+  pageName: `Article: ${b.title && b.title !== "BLOG" ? b.title : b.metaTitle || b.slug}`,
+  metaTitle: b.metaTitle || b.title,
+  metaDescription: b.metaDescription || (b.excerpt ? b.excerpt.slice(0, 155) : ""),
+  canonicalUrl: b.canonicalUrl || `https://dhilipstudio.com/blog/${b.slug}.php`,
+  ogImageUrl: b.coverImage || "/logo.png",
+  focusKeyword: `${b.category} Tips Chennai`,
+  status: b.metaDescription || b.excerpt ? "Optimized" : "Needs Review",
+}));
+
+export const initialMetaTags: MetaTagEntry[] = [
+  ...coreMetaTags,
+  ...serviceMetaEntries,
+  ...blogMetaEntries,
 ];
 
 export const initialKeywords: TargetKeyword[] = [

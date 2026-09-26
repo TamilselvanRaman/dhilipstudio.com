@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StudioStorySection } from "@/components/sections/StudioStorySection";
-import { WhatWeDoSection } from "@/components/sections/WhatWeDoSection";
+import { AboutStudioSpecs } from "@/components/sections/AboutStudioSpecs";
 import { ExperienceStepsSection } from "@/components/sections/ExperienceStepsSection";
 import { CtaBandSection } from "@/components/sections/CtaBandSection";
 import Link from "next/link";
@@ -29,8 +29,6 @@ export default function AboutPage() {
 
           <div className="mt-6 relative z-10 max-w-6xl mx-auto text-center ">
             
-            
-
             {/* Main Headline Reveal */}
             <h1
               className={`font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-stone-900 max-w-4xl mx-auto transition-all duration-1000 delay-200 ease-out ${
@@ -153,8 +151,8 @@ export default function AboutPage() {
         {/* Tabbed Studio Story Section */}
         <StudioStorySection />
 
-        {/* What We Do & What We Offer Section */}
-        <WhatWeDoSection />
+        {/* Dedicated Unique Studio Specs & Pillars Section */}
+        <AboutStudioSpecs />
 
         {/* Step Workflow Section */}
         <ExperienceStepsSection />

@@ -35,9 +35,15 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const element = ref.current;
     if (!element) return;
 
+    // Fallback timer to guarantee visibility on mobile if observer delays
+    const fallbackTimer = setTimeout(() => {
+      setIsVisible(true);
+    }, 400 + delay);
+
     // Fallback if IntersectionObserver is not supported
     if (typeof window === "undefined" || !("IntersectionObserver" in window)) {
       setIsVisible(true);
+      clearTimeout(fallbackTimer);
       return;
     }
 
@@ -45,6 +51,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          clearTimeout(fallbackTimer);
           if (once) {
             observer.unobserve(entry.target);
           }
@@ -53,14 +60,15 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
         }
       },
       {
-        threshold,
-        rootMargin: "0px 0px -40px 0px",
+        threshold: 0.01,
+        rootMargin: "120px 0px 100px 0px",
       }
     );
 
     observer.observe(element);
 
     return () => {
+      clearTimeout(fallbackTimer);
       if (element) observer.unobserve(element);
     };
   }, [threshold, once, isOpenReveal, delay]);

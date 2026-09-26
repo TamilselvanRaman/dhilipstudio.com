@@ -13,8 +13,8 @@ export default function BlogPage() {
     <div className="min-h-screen bg-[#fcfbfa] text-stone-900 flex flex-col selection:bg-[#b88c42]/20 selection:text-[#b88c42]">
       <Header />
 
-      <main className="flex-1 pt-24 pb-16">
-        <section className="px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
+      <main className="flex-1 pt-24 pb-16 sm:pb-24">
+        <section className="px-4 sm:px-6 md:px-12 max-w-7xl mx-auto mb-16 sm:mb-24">
           {/* Top Page Header / Title Content Section with Open Reveal */}
           <ScrollReveal variant="open-scale" duration={800} isOpenReveal={true}>
             <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
@@ -48,8 +48,8 @@ export default function BlogPage() {
                       />
                     </div>
 
-                    {/* Blog Title in Bright Blue Font */}
-                    <h2 className="font-sans font-bold text-sm sm:text-base text-[#0070f3] group-hover:text-[#0051a8] group-hover:underline uppercase tracking-wide leading-snug mb-3">
+                    {/* Blog Title */}
+                    <h2 className="font-serif font-bold text-base sm:text-lg text-stone-900 group-hover:text-[#b88c42] transition-colors leading-snug mb-2.5">
                       {post.cardTitle}
                     </h2>
 
@@ -59,11 +59,11 @@ export default function BlogPage() {
                     </p>
                   </div>
 
-                  {/* "Read More →" Link */}
-                  <div className="pt-2">
-                    <span className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-stone-900 group-hover:text-[#0070f3] transition-colors">
+                  {/* "Read More →" Simple Text Link */}
+                  <div className="pt-1">
+                    <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-stone-900 group-hover:text-[#b88c42] transition-colors">
                       <span>Read More</span>
-                      <span className="text-base group-hover:translate-x-1.5 transition-transform duration-300">&rarr;</span>
+                      <span className="material-symbols-outlined text-base group-hover:translate-x-1.5 transition-transform">arrow_forward</span>
                     </span>
                   </div>
                 </Link>

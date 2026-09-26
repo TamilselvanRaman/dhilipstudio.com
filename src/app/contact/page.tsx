@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CustomDropdown } from "@/components/ui/CustomDropdown";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [mapLoaded, setMapLoaded] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -19,7 +20,8 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    const queryName = formData.name ? encodeURIComponent(formData.name) : "Customer";
+    router.push(`/thank-you?name=${queryName}`);
   };
 
   return (
@@ -79,7 +81,7 @@ export default function ContactPage() {
 
                 <iframe
                   title="Dhilip Studio Porur Google Maps"
-                  src="https://maps.google.com/maps?q=13.0377,80.1514&z=16&output=embed"
+                  src="https://maps.google.com/maps?q=Dhilip+Studio+Porur+Chennai&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
@@ -174,117 +176,107 @@ export default function ContactPage() {
                     Fill out the form below and we will get back to you within 24 hours.
                   </p>
 
-                  {formSubmitted ? (
-                    <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 p-8 rounded-2xl text-center space-y-3 animate-fade-in-up">
-                      <span className="material-symbols-outlined text-4xl text-emerald-600">check_circle</span>
-                      <h4 className="font-serif text-2xl font-bold">Inquiry Received!</h4>
-                      <p className="text-xs sm:text-sm text-emerald-800">
-                        Thank you <strong>{formData.name || "Customer"}</strong>. We have received your booking inquiry for {formData.date || "your wedding"} and will contact you shortly!
-                      </p>
-                    </div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
-                            YOUR FULL NAME *
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.name}
-                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            placeholder="e.g. Anand &amp; Priya"
-                            className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
-                            PHONE / WHATSAPP NUMBER *
-                          </label>
-                          <input
-                            type="tel"
-                            required
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                            placeholder="+91 98400 00000"
-                            className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
-                            EVENT TYPE
-                          </label>
-                          <CustomDropdown
-                            value={formData.eventType}
-                            onChange={(val) => setFormData({ ...formData, eventType: val })}
-                            theme="gold"
-                            options={[
-                              { value: "Wedding Photography", label: "Wedding Photography", icon: "photo_camera" },
-                              { value: "Candid Photography", label: "Candid Photography", icon: "camera" },
-                              { value: "Brahmin Wedding Photography", label: "Brahmin Wedding Photography", icon: "auto_awesome" },
-                              { value: "Pre/Post-Wedding Shoot", label: "Pre/Post-Wedding Shoot", icon: "favorite" },
-                              { value: "Engagement Photography", label: "Engagement Photography", icon: "diamond" },
-                              { value: "Maternity Photoshoot", label: "Maternity Photoshoot", icon: "child_care" },
-                              { value: "Newborn Baby Photoshoot", label: "Newborn Baby Photoshoot", icon: "face" },
-                              { value: "Birthday Photography", label: "Birthday Photography", icon: "cake" },
-                            ]}
-                          />
-                        </div>
-
-                        <div>
-                          <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
-                            TENTATIVE EVENT DATE
-                          </label>
-                          <div className="relative">
-                            <input
-                              type="date"
-                              value={formData.date}
-                              onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                              className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] focus:ring-2 focus:ring-[#b88c42]/20 text-sm bg-stone-50/50 hover:bg-white text-stone-800 transition-all font-sans cursor-pointer"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
-                          EVENT LOCATION / HALL NAME
+                          YOUR FULL NAME *
                         </label>
                         <input
                           type="text"
-                          value={formData.location}
-                          onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                          placeholder="e.g. Mayor Ramanathan Hall, Mylapore, Chennai"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          placeholder="e.g. Anand &amp; Priya"
                           className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
                         />
                       </div>
 
                       <div>
                         <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
-                          ADDITIONAL MESSAGE / CUSTOM REQUIREMENTS
+                          PHONE / WHATSAPP NUMBER *
                         </label>
-                        <textarea
-                          rows={4}
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          placeholder="Tell us about your wedding events, duration, or raw silk album preferences..."
+                        <input
+                          type="tel"
+                          required
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="+91 98400 00000"
                           className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
-                        ></textarea>
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      <div>
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
+                          EVENT TYPE
+                        </label>
+                        <CustomDropdown
+                          value={formData.eventType}
+                          onChange={(val) => setFormData({ ...formData, eventType: val })}
+                          theme="gold"
+                          options={[
+                            { value: "Wedding Photography", label: "Wedding Photography", icon: "photo_camera" },
+                            { value: "Candid Photography", label: "Candid Photography", icon: "camera" },
+                            { value: "Brahmin Wedding Photography", label: "Brahmin Wedding Photography", icon: "auto_awesome" },
+                            { value: "Pre/Post-Wedding Shoot", label: "Pre/Post-Wedding Shoot", icon: "favorite" },
+                            { value: "Engagement Photography", label: "Engagement Photography", icon: "diamond" },
+                            { value: "Maternity Photoshoot", label: "Maternity Photoshoot", icon: "child_care" },
+                            { value: "Newborn Baby Photoshoot", label: "Newborn Baby Photoshoot", icon: "face" },
+                            { value: "Birthday Photography", label: "Birthday Photography", icon: "cake" },
+                          ]}
+                        />
                       </div>
 
-                      <button
-                        type="submit"
-                        className="w-full py-4 bg-stone-900 hover:bg-[#b88c42] text-white font-bold text-xs uppercase tracking-[0.2em] rounded-full transition-all shadow-lg hover:shadow-xl cursor-pointer"
-                      >
-                        SUBMIT BOOKING INQUIRY &rarr;
-                      </button>
-                    </form>
-                  )}
+                      <div>
+                        <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
+                          TENTATIVE EVENT DATE
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="date"
+                            value={formData.date}
+                            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                            className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] focus:ring-2 focus:ring-[#b88c42]/20 text-sm bg-stone-50/50 hover:bg-white text-stone-800 transition-all font-sans cursor-pointer"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
+                        EVENT LOCATION / HALL NAME
+                      </label>
+                      <input
+                        type="text"
+                        value={formData.location}
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                        placeholder="e.g. Mayor Ramanathan Hall, Mylapore, Chennai"
+                        className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-stone-700 mb-1.5 font-mono">
+                        ADDITIONAL MESSAGE / CUSTOM REQUIREMENTS
+                      </label>
+                      <textarea
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder="Tell us about your wedding events, duration, or raw silk album preferences..."
+                        className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:border-[#b88c42] text-sm bg-stone-50/50"
+                      ></textarea>
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full py-4 bg-stone-900 hover:bg-[#b88c42] text-white font-bold text-xs uppercase tracking-[0.2em] rounded-full transition-all shadow-lg hover:shadow-xl cursor-pointer"
+                    >
+                      SUBMIT BOOKING INQUIRY &rarr;
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>

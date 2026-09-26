@@ -104,7 +104,7 @@ export const WhatWeDoSection: React.FC = () => {
               <div>
                 <div className="h-52 w-full overflow-hidden relative bg-stone-100">
                   <img
-                    src="/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.jpg"
+                    src="/home_Page_images/cinematic-post-wedding-photography-chennai-dhilip-studio.webp"
                     alt="Pre-Wedding Photography"
                     className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
                   />
@@ -176,7 +176,7 @@ export const WhatWeDoSection: React.FC = () => {
               <div>
                 <div className="h-52 w-full overflow-hidden relative bg-stone-100">
                   <img
-                    src="/home_Page_images/brahmin-wedding-photography.jpg"
+                    src="/home_Page_images/brahmin-wedding-photography.webp"
                     alt="Traditional Photography"
                     className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
                   />
@@ -210,7 +210,7 @@ export const WhatWeDoSection: React.FC = () => {
               <div>
                 <div className="h-52 w-full overflow-hidden relative bg-stone-100">
                   <img
-                    src="/home_Page_images/baby-shower-photography-chennai-dhilip-studio.jpg"
+                    src="/home_Page_images/baby-shower-photography-chennai-dhilip-studio.webp"
                     alt="Maternity Photoshoot"
                     className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
                   />
@@ -248,7 +248,7 @@ export const WhatWeDoSection: React.FC = () => {
               <div>
                 <div className="h-52 w-full overflow-hidden relative bg-stone-100">
                   <img
-                    src="/home_Page_images/engagement-photo-studio-chennai.jpg"
+                    src="/home_Page_images/best-newborn-baby-photographer-chennai-dhilip-studio.webp"
                     alt="Newborn Photoshoot"
                     className="w-full h-full object-cover group-hover:scale-106 transition-transform duration-700"
                   />

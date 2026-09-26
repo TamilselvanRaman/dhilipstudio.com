@@ -43,6 +43,7 @@ function SidebarNavContent({
   const publicPagesList = [
     { label: "Home Page", id: "home", icon: "home" },
     { label: "About Us", id: "about", icon: "info" },
+    { label: "Service Pages (8 Pages)", id: "services", icon: "miscellaneous_services" },
     { label: "Gallery", id: "gallery", icon: "photo_library" },
     { label: "Videos", id: "videos", icon: "smart_display" },
     { label: "Contact Us", id: "contact", icon: "contact_mail" },
@@ -54,6 +55,7 @@ function SidebarNavContent({
     { label: "Monograph Gallery", href: "/admin/gallery", icon: "photo_library" },
     { label: "Album Collections", href: "/admin/albums", icon: "collections" },
     { label: "Video Showcase", href: "/admin/videos", icon: "smart_display" },
+    { label: "Service Pages CMS", href: "/admin/services", icon: "miscellaneous_services" },
     { label: "Blog Journal CMS", href: "/admin/blog", icon: "article" },
   ];
 

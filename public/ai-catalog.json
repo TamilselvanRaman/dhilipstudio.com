@@ -12,7 +12,7 @@
     {
       "id": "wedding-photography-services",
       "name": "Wedding Photography & Cinematography Services",
-      "type": "service",
+      "type": "service", 
       "url": "https://dhilipstudio.com/services",
       "description": "Comprehensive photography and cinematography services for South Indian weddings, candid portraits, Brahmin rituals, and maternity shoots."
     },

@@ -8,12 +8,14 @@ export const Hero3DCarousel: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(1200);
   const [isAutoPlayPaused, setIsAutoPlayPaused] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  // Trigger smooth entrance reveal on initial page load
+  // Trigger smooth entrance reveal and client mount state
   useEffect(() => {
+    setIsMounted(true);
     const timer = setTimeout(() => {
       setIsRevealed(true);
     }, 120);
@@ -50,11 +52,11 @@ export const Hero3DCarousel: React.FC = () => {
   }, [isAutoPlayPaused]);
 
   const getSpacingMultiplier = () => {
-    if (windowWidth < 380) return 0.62;
-    if (windowWidth < 480) return 0.68;
-    if (windowWidth < 640) return 0.78;
-    if (windowWidth < 768) return 0.88;
-    if (windowWidth < 1024) return 0.95;
+    if (windowWidth < 380) return 0.45;
+    if (windowWidth < 480) return 0.52;
+    if (windowWidth < 640) return 0.62;
+    if (windowWidth < 768) return 0.78;
+    if (windowWidth < 1024) return 0.90;
     return 1.0;
   };
 
@@ -64,7 +66,9 @@ export const Hero3DCarousel: React.FC = () => {
     if (diff > totalCards / 2) diff -= totalCards;
     if (diff < -totalCards / 2) diff += totalCards;
 
-    const isVisible = Math.abs(diff) <= 3;
+    const absDiff = Math.abs(diff);
+    // On small mobile screens (< 640px), only show the center card & adjacent 1-level side cards
+    const isVisible = windowWidth < 640 ? absDiff <= 1 : absDiff <= 3;
     const mult = getSpacingMultiplier();
 
     const configs: Record<
@@ -204,6 +208,7 @@ export const Hero3DCarousel: React.FC = () => {
           <div className="carousel-track">
             {heroCards.map((card, idx) => {
               const isCenter = idx === currentIndex;
+              const shouldRenderImage = isCenter || isMounted;
               return (
                 <article
                   key={card.id}
@@ -219,14 +224,12 @@ export const Hero3DCarousel: React.FC = () => {
                 >
                   <img
                     src={card.src}
-                    srcSet={`${card.src.replace('.webp', '-mobile.webp')} 400w, ${card.src} 800w`}
-                    sizes="(max-width: 640px) 380px, 800px"
                     alt={card.alt}
                     width={870}
                     height={1280}
                     loading={isCenter ? "eager" : "lazy"}
                     decoding={isCenter ? "sync" : "async"}
-                    {...(isCenter ? ({ fetchPriority: "high" } as any) : {})}
+                    {...(isCenter ? ({ fetchPriority: "high" } as any) : { fetchPriority: "low" })}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent"></div>
@@ -257,24 +260,26 @@ export const Hero3DCarousel: React.FC = () => {
       </div>
 
       {/* Dot Indicators */}
-      <nav aria-label="Carousel pagination" className="flex items-center justify-center space-x-1 mt-2 mb-4">
-        {heroCards.map((_, dotIdx) => (
-          <button
-            key={dotIdx}
-            type="button"
-            onClick={() => setCurrentIndex(dotIdx)}
-            aria-label={`Go to slide ${dotIdx + 1}`}
-            className="min-w-[44px] min-h-[44px] p-2 flex items-center justify-center focus:outline-none cursor-pointer"
-          >
-            <span
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                dotIdx === currentIndex
-                  ? "w-5 bg-primary shadow-xs"
-                  : "w-1.5 bg-outline-variant/60 hover:bg-outline"
-              }`}
-            />
-          </button>
-        ))}
+      <nav aria-label="Carousel pagination" className="flex items-center justify-center mt-2 mb-3">
+        <div className="inline-flex items-center justify-center gap-1 bg-black/20 backdrop-blur-md px-2.5 py-1 rounded-full border border-black/5 shadow-xs">
+          {heroCards.map((_, dotIdx) => (
+            <button
+              key={dotIdx}
+              type="button"
+              onClick={() => setCurrentIndex(dotIdx)}
+              aria-label={`Go to slide ${dotIdx + 1}`}
+              className="p-0.5 flex items-center justify-center focus:outline-none cursor-pointer"
+            >
+              <span
+                className={`h-1 rounded-full transition-all duration-300 ${
+                  dotIdx === currentIndex
+                    ? "w-3.5 bg-[#b88c42] shadow-xs"
+                    : "w-1 bg-[#b88c42]/35 hover:bg-[#b88c42]/70"
+                }`}
+              />
+            </button>
+          ))}
+        </div>
       </nav>
     </div>
   );
